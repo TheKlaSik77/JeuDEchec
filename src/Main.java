@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Jeu d'échecs");
+        int[][] echiquier = AffichageEchiquier.creerEtRemplirEchiquier();
+        System.out.println("-------------------------------------------------");
+        AffichageEchiquier.affTab(echiquier);
+        System.out.println("-------------------------------------------------");
+        AffichageEchiquier.afficherEchiquier(echiquier);
+
     }
 }
