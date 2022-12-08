@@ -11,7 +11,6 @@ public class DeplacementPion {
 
 
     /**
-     *
      * @return la ligne saisie par l'utilisateur pour se déplacer
      */
     public static int saisieCoordonneeLigne() {
@@ -29,7 +28,6 @@ public class DeplacementPion {
     }
 
     /**
-     *
      * @return la colonne saisie par l'utilisateur pour se déplacer
      */
     public static int saisieCoordonneeColonne() {
@@ -48,10 +46,9 @@ public class DeplacementPion {
 
 
     /**
-     *
      * @param echiquier
-     * @param l (coordonnée de la ligne)
-     * @param c (coordonnée de la colonne)
+     * @param l         (coordonnée de la ligne)
+     * @param c         (coordonnée de la colonne)
      * @return vrai si l et c valent 0
      */
     public static boolean caseVide(int[][] echiquier, int l, int c) {
@@ -65,18 +62,19 @@ public class DeplacementPion {
     }
 
     /**
-     *
      * @param echiquier
      * @return vrai si le pion peut avancer de 2 cases
      */
-    public static boolean avance2Cases(int [][] echiquier){
-        for (int ligne = 0; ligne < echiquier.length; ligne ++) {
-            for (int colonne = 0; colonne < echiquier[ligne].length; colonne++){
-                if(echiquier[6][colonne]==1){
+    public static boolean avance2Cases(int[][] echiquier) {
+        for (int ligne = 0; ligne < echiquier.length; ligne++) {
+            for (int colonne = 0; colonne < echiquier[ligne].length; colonne++) {
+                if (echiquier[6][colonne] == 1) {
                     return true;
                 }
             }
-       return false;
-    }
+        }
 
+        return false;
+    }
 }
+
