@@ -5,13 +5,12 @@ public class MethodesDeplacements {
     /**
      * @return la ligne saisie par l'utilisateur pour se déplacer
      */
-    public static int saisieCoordonneeLigne() {
+    public static int saisieCoordonneeLigneDepart() {
         Scanner sc = new Scanner(System.in);
         int saisieLigne;
 
         do {
-            System.out.print("Entrer les coordonnées de la case (entre 1 et 8) : ");
-            System.out.println("ligne:");
+            System.out.print("Entrer les coordonnées de la ligne de la case de départ (entre 1 et 8) : ");
             saisieLigne = sc.nextInt();
 
         } while (saisieLigne < 1 || saisieLigne > 8);
@@ -22,13 +21,43 @@ public class MethodesDeplacements {
     /**
      * @return la colonne saisie par l'utilisateur pour se déplacer
      */
-    public static int saisieCoordonneeColonne() {
+    public static int saisieCoordonneeColonneDepart() {
         Scanner sc = new Scanner(System.in);
         int saisieColonne;
 
         do {
-            System.out.print("Entrer les coordonnées de la case (entre 1 et 8) : ");
-            System.out.println("colonne:");
+            System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
+
+            saisieColonne = sc.nextInt();
+
+        } while (saisieColonne < 1 || saisieColonne > 8);
+
+        return saisieColonne - 1;
+    }
+
+    public static int saisieCoordonneeLigneArrivee() {
+        Scanner sc = new Scanner(System.in);
+        int saisieLigne;
+
+        do {
+            System.out.print("Entrer les coordonnées de la ligne de la case d'arrivée (entre 1 et 8) : ");
+            saisieLigne = sc.nextInt();
+
+        } while (saisieLigne < 1 || saisieLigne > 8);
+
+        return saisieLigne - 1;
+    }
+
+    /**
+     * @return la colonne saisie par l'utilisateur pour se déplacer
+     */
+    public static int saisieCoordonneeColonneArrivee() {
+        Scanner sc = new Scanner(System.in);
+        int saisieColonne;
+
+        do {
+            System.out.print("Entrer les coordonnées de la colonne de la case d'arrivée (entre 1 et 8) : ");
+
             saisieColonne = sc.nextInt();
 
         } while (saisieColonne < 1 || saisieColonne > 8);
