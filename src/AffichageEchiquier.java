@@ -64,32 +64,43 @@ public class AffichageEchiquier{
                 switch (echiquier[ligne][colonne]){
                     case 0:
                         pieceSurCase = "  ";
+                        break;
                     case 1:
                         pieceSurCase = "Pb";
+                        break;
                     case -1:
                         pieceSurCase = "Pn";
+                        break;
                     case 2:
                         pieceSurCase = "Rb";
+                        break;
                     case -2:
                         pieceSurCase = "Rn";
+                        break;
                     case 3:
                         pieceSurCase = "Db";
+                        break;
                     case -3:
                         pieceSurCase = "Dn";
+                        break;
                     case 4:
                         pieceSurCase = "Fb";
+                        break;
                     case -4:
                         pieceSurCase = "Fn";
+                        break;
                     case 5:
                         pieceSurCase = "Cb";
+                        break;
                     case -5:
                         pieceSurCase = "Cn";
+                        break;
                     case 6:
                         pieceSurCase = "Tb";
+                        break;
                     case -6:
                         pieceSurCase = "Tn";
                         break;
-
                 }
                 if (colonne == 7){
                     System.out.println(" " + pieceSurCase + " ");
