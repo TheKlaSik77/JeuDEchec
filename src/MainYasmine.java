@@ -1,4 +1,4 @@
-public class Main {
+public class MainYasmine {
     public static void main(String[] args) {
         int[][] echiquier = AffichageEchiquier.creerEtRemplirEchiquier();
         System.out.println("-------------------------------------------------");
