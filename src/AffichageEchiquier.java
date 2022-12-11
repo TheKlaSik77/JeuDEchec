@@ -17,22 +17,23 @@ public class AffichageEchiquier{
     Fou : 4
     Cavalier : 5
     Tour : 6
+       " A    B    C    D    E    F    G    H "
 
-     Tn | Cn | Fn | Dn | Rn | Fn | Cn | Tn
-    ---------------------------------------
-     Pn | Pn | Pn | Pn | Pn | Pn | Pn | Pn
-    ---------------------------------------
-        |    |    |    |    |    |    |
-    ---------------------------------------
-        |    |    |    |    |    |    |
-    ---------------------------------------
-        |    |    |    |    |    |    |
-    ---------------------------------------
-        |    |    |    |    |    |    |
-    ---------------------------------------
-     Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb
-    ---------------------------------------
-     Tb | Cb | Fb | Db | Rb | Fb | Cb | Tb
+         Tn | Cn | Fn | Dn | Rn | Fn | Cn | Tn   1
+        ---------------------------------------
+         Pn | Pn | Pn | Pn | Pn | Pn | Pn | Pn   2
+        ---------------------------------------
+            |    |    |    |    |    |    |      3
+        ---------------------------------------
+            |    |    |    |    |    |    |      4
+        ---------------------------------------
+            |    |    |    |    |    |    |      5
+        ---------------------------------------
+            |    |    |    |    |    |    |      6
+        ---------------------------------------
+         Pb | Pb | Pb | Pb | Pb | Pb | Pb | Pb   7
+        ---------------------------------------
+         Tb | Cb | Fb | Db | Rb | Fb | Cb | Tb   8
      */
 
     /**
@@ -58,6 +59,8 @@ public class AffichageEchiquier{
     public static void afficherEchiquier(int[][] echiquier){
 
         String pieceSurCase = "";
+        System.out.println(" A    B    C    D    E    F    G    H ");
+        System.out.println();
         for (int ligne = 0 ; ligne < 8 ; ligne++){
             for (int colonne = 0 ; colonne < 8 ; colonne++){
 
@@ -103,7 +106,9 @@ public class AffichageEchiquier{
                         break;
                 }
                 if (colonne == 7){
-                    System.out.println(" " + pieceSurCase + " ");
+                    System.out.print(" " + pieceSurCase + " ");
+                    System.out.println("    " + (ligne+ 1 ));
+
                 } else {
                     System.out.print(" " + pieceSurCase + " |");
                 }

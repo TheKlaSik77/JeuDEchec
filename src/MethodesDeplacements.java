@@ -23,10 +23,11 @@ public class MethodesDeplacements {
      */
     public static int saisieCoordonneeColonneDepart() {
         Scanner sc = new Scanner(System.in);
-        int saisieColonne;
+        System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
+        int saisieColonne = sc.nextInt();
 
         do {
-            System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
+            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
 
             saisieColonne = sc.nextInt();
 
