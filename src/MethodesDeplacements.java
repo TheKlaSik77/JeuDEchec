@@ -10,13 +10,13 @@ public class MethodesDeplacements {
         int saisieLigne;
 
         do {
-            System.out.print("Entrer les coordonnées de la case : ");
+            System.out.print("Entrer les coordonnées de la case (entre 1 et 8) : ");
             System.out.println("ligne:");
             saisieLigne = sc.nextInt();
 
-        } while (saisieLigne < 0 || saisieLigne > 7);
+        } while (saisieLigne < 1 || saisieLigne > 8);
 
-        return saisieLigne;
+        return saisieLigne - 1;
     }
 
     /**
@@ -27,13 +27,13 @@ public class MethodesDeplacements {
         int saisieColonne;
 
         do {
-            System.out.print("Entrer les coordonnées de la case : ");
+            System.out.print("Entrer les coordonnées de la case (entre 1 et 8) : ");
             System.out.println("colonne:");
             saisieColonne = sc.nextInt();
 
-        } while (saisieColonne < 0 || saisieColonne > 7);
+        } while (saisieColonne < 1 || saisieColonne > 8);
 
-        return saisieColonne;
+        return saisieColonne - 1;
     }
 
 
