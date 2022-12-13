@@ -56,6 +56,7 @@ public class DeplacementTour {
      * Cette méthode déplace la tour à la bonne place
      */
     public static void deplacerTour(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
+
         if (echiquier[ligneDepart][colonneDepart] == 6){
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = 6;

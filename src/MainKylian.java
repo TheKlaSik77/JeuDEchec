@@ -1,7 +1,7 @@
 public class MainKylian{
 
     public static void main(String[] args) {
-
+        /*
         int[][] echiquier1 = {
                 {0,4,5,1,1,4,-6,0},
                 {1,4,-5,-6,6,0,0,1},
@@ -14,5 +14,7 @@ public class MainKylian{
         };
 
         AffichageEchiquier.afficherEchiquier(echiquier1);
+        */
+        MethodesDeplacements.saisieCoordonneeColonneDepart();
     }
 }

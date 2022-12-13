@@ -19,22 +19,30 @@ public class MethodesDeplacements {
     }
 
     /**
+     * Saisie une lettre en Maj ou en min et la fonction change cette lettre en int
      * @return la colonne saisie par l'utilisateur pour se déplacer
      */
+
     public static int saisieCoordonneeColonneDepart() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
-        int saisieColonne = sc.nextInt();
+        System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre A et H) : ");
+        String saisieColonne = sc.nextLine();
+        saisieColonne = saisieColonne.toUpperCase();
+        int nCase = saisieColonne.charAt(0) - 64;
 
-        do {
-            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case de départ (entre 1 et 8) : ");
+        while (saisieColonne.length() > 1 || nCase < 1 || nCase > 8) {
+            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case de départ (entre A et H) : ");
 
-            saisieColonne = sc.nextInt();
+            saisieColonne = sc.nextLine();
+            saisieColonne = saisieColonne.toUpperCase();
+            nCase = saisieColonne.charAt(0) - 64;
+            // Permet de mettre les caractères en maj puis de calculer a quoi correspond la case par rapport au code ascii
 
-        } while (saisieColonne < 1 || saisieColonne > 8);
+        }
 
-        return saisieColonne - 1;
+        return nCase - 1; // Renvoie le nCase - 1 car le tableau commence à 0
     }
+
 
     public static int saisieCoordonneeLigneArrivee() {
         Scanner sc = new Scanner(System.in);
@@ -54,16 +62,22 @@ public class MethodesDeplacements {
      */
     public static int saisieCoordonneeColonneArrivee() {
         Scanner sc = new Scanner(System.in);
-        int saisieColonne;
+        System.out.print("Entrer les coordonnées de la colonne de la case d'arrivée (entre A et H) : ");
+        String saisieColonne = sc.nextLine();
+        saisieColonne = saisieColonne.toUpperCase();
+        int nCase = saisieColonne.charAt(0) - 64;
 
-        do {
-            System.out.print("Entrer les coordonnées de la colonne de la case d'arrivée (entre 1 et 8) : ");
+        while (saisieColonne.length() > 1 || nCase < 1 || nCase > 8) {
+            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case d'arrivée (entre A et H) : ");
 
-            saisieColonne = sc.nextInt();
+            saisieColonne = sc.nextLine();
+            saisieColonne = saisieColonne.toUpperCase();
+            nCase = saisieColonne.charAt(0) - 64;
+            // Permet de mettre les caractères en maj puis de calculer a quoi correspond la case par rapport au code ascii
 
-        } while (saisieColonne < 1 || saisieColonne > 8);
+        }
 
-        return saisieColonne - 1;
+        return nCase - 1; // Renvoie le nCase - 1 car le tableau commence à 0
     }
 
 
