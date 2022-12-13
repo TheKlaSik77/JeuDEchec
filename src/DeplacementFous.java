@@ -84,5 +84,16 @@ public class DeplacementFous {
         return false;
     }
 
+    public static void deplacerFou(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
+
+        if (echiquier[ligneDepart][colonneDepart] == 4){
+            echiquier[ligneDepart][colonneDepart] = 0;
+            echiquier[ligneArrivee][colonneArrivee] = 6;
+        } else if (echiquier[ligneDepart][colonneDepart] == -4){
+            echiquier[ligneDepart][colonneDepart] = 0;
+            echiquier[ligneArrivee][colonneArrivee] = -6;
+        }
+    }
+
 
 }
