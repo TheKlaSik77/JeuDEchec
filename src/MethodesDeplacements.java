@@ -93,4 +93,12 @@ public class MethodesDeplacements {
         else
             return false;
     }
+
+    public static boolean testCaseArriveeDifferentCamp(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
+        if (echiquier[ligneDepart][colonneDepart] > 0){
+            return echiquier[ligneArrivee][colonneArrivee] <= 0;
+        } else {
+            return echiquier[ligneArrivee][colonneArrivee] >= 0;
+        }
+    }
 }
