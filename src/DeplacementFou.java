@@ -1,4 +1,4 @@
-public class DeplacementFous {
+public class DeplacementFou {
 
     /**
      * Teste si la case d'arrivée est bien dans la diagonale de la case de départ
