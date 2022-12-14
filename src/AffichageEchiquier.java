@@ -59,50 +59,50 @@ public class AffichageEchiquier{
     public static void afficherEchiquier(int[][] echiquier){
 
         String pieceSurCase = "";
-        System.out.println(" A    B    C    D    E    F    G    H ");
+        System.out.println("  A     B     C     D     E     F     G     H ");
         System.out.println();
         for (int ligne = 0 ; ligne < 8 ; ligne++){
             for (int colonne = 0 ; colonne < 8 ; colonne++){
 
                 switch (echiquier[ligne][colonne]){
                     case 0:
-                        pieceSurCase = "  ";
+                        pieceSurCase = " . ";
                         break;
                     case 1:
-                        pieceSurCase = "Pb";
+                        pieceSurCase = " " + ((char) 9823) + " ";
                         break;
                     case -1:
-                        pieceSurCase = "Pn";
+                        pieceSurCase = " " + ((char) 9817) + " ";
                         break;
                     case 2:
-                        pieceSurCase = "Rb";
+                        pieceSurCase = " " + ((char) 9818) + " ";
                         break;
                     case -2:
-                        pieceSurCase = "Rn";
+                        pieceSurCase = " " + ((char) 9812) + " ";
                         break;
                     case 3:
-                        pieceSurCase = "Db";
+                        pieceSurCase = " " + ((char) 9819) + " ";
                         break;
                     case -3:
-                        pieceSurCase = "Dn";
+                        pieceSurCase = " " + ((char) 9813) + " ";
                         break;
                     case 4:
-                        pieceSurCase = "Fb";
+                        pieceSurCase = " " + ((char) 9821) + " ";
                         break;
                     case -4:
-                        pieceSurCase = "Fn";
+                        pieceSurCase = " " + ((char) 9815) + " ";
                         break;
                     case 5:
-                        pieceSurCase = "Cb";
+                        pieceSurCase = " " + ((char) 9822) + " ";
                         break;
                     case -5:
-                        pieceSurCase = "Cn";
+                        pieceSurCase = " " + ((char) 9816) + " ";
                         break;
                     case 6:
-                        pieceSurCase = "Tb";
+                        pieceSurCase = " " + ((char) 9820) + " ";
                         break;
                     case -6:
-                        pieceSurCase = "Tn";
+                        pieceSurCase = " " + ((char) 9814) + " ";
                         break;
                 }
                 if (colonne == 7){
@@ -114,7 +114,7 @@ public class AffichageEchiquier{
                 }
             }
             if (ligne != 7){
-                System.out.println("---------------------------------------");
+                System.out.println("-----------------------------------------------");
             }
         }
     }

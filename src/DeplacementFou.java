@@ -42,10 +42,10 @@ public class DeplacementFou {
         }
         if (fouCaseValide(ligneDepart,colonneDepart,ligneArrivee,colonneArrivee)) {
             int ligneTestee = ligneDepart;
-            int colonneTestee = ligneArrivee;
+            int colonneTestee = colonneDepart;
             if (ligneArrivee > ligneDepart){
                 if (colonneArrivee > colonneDepart){ // Cas : diagonale sud-est
-                    while (ligneTestee != ligneArrivee - 1 && colonneTestee != colonneArrivee - 1){
+                    while (ligneTestee != (ligneArrivee - 1) && colonneTestee != (colonneArrivee - 1)){
                         ligneTestee++;
                         colonneTestee++;
                         if (echiquier[ligneTestee][colonneTestee] != 0){
@@ -80,18 +80,20 @@ public class DeplacementFou {
                     }
                 }
             }
+        }else{
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static void deplacerFou(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
 
         if (echiquier[ligneDepart][colonneDepart] == 4){
             echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = 6;
+            echiquier[ligneArrivee][colonneArrivee] = 4;
         } else if (echiquier[ligneDepart][colonneDepart] == -4){
             echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = -6;
+            echiquier[ligneArrivee][colonneArrivee] = -4;
         }
     }
 

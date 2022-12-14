@@ -77,7 +77,7 @@ class DeplacementTourTest {
         assertFalse(DeplacementTour.tourPeutAllerCase(echiquier3,3,3,3,0));  // Deplacement pas ok piece sur le chemin à gauche
         assertFalse(DeplacementTour.tourPeutAllerCase(echiquier4,3,3,0,3));  // Deplacement pas ok piece sur le chemin en haut
         assertFalse(DeplacementTour.tourPeutAllerCase(echiquier5,3,3,3,6));  // Deplacement pas ok piece sur le chemin à droite
-        assertTrue(DeplacementTour.tourPeutAllerCase(echiquier6,3,3,3,7));  // Deplacement ok case finale != 0
+        assertFalse(DeplacementTour.tourPeutAllerCase(echiquier6,3,3,3,7));  // Deplacement ok case finale != 0
     }
 
     @Test

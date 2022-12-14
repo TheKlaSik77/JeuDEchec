@@ -12,6 +12,7 @@ public class DeplacementTour {
     public static boolean tourPeutAllerCase(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
 
         if (!MethodesDeplacements.testCaseArriveeDifferentCamp(echiquier,ligneDepart,colonneDepart,ligneArrivee,colonneArrivee)){
+
             return false;
         }
         if (ligneDepart == ligneArrivee){
