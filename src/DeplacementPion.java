@@ -55,11 +55,11 @@ public class DeplacementPion {
         // pour le pion blanc
         if (echiquier[ligneDepart][colonneDepart] == 1) {
             if (Peutavancer2Cases(echiquier, 6)) {
-                echiquier[ligneDepart - 2][colonneDepart] = 1;
+                echiquier[ligneArrivee][colonneArrivee] = 1;
                 echiquier[ligneDepart][colonneDepart] = 0;
             } else {
                 if (PeutAvancer1Case(echiquier, ligneArrivee, colonneArrivee))
-                    echiquier[ligneDepart - 1][colonneDepart] = 1;
+                    echiquier[ligneArrivee][colonneArrivee] = 1;
                     echiquier[ligneDepart][colonneDepart] = 0;
             }
 
