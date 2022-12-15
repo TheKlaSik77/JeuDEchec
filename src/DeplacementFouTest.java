@@ -105,4 +105,70 @@ class DeplacementFouTest {
         DeplacementFou.deplacerFou(echiquier1,3,3,0,0);
         assertArrayEquals(echiquier2, echiquier1);
     }
+
+    @Test
+    void fouMetEnEchecRoi(){
+
+        int[][] echiquier1 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 4, 0,-2, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+
+        assertFalse(DeplacementFou.fouMetEnEchecRoi(echiquier1,3,3));
+        int[][] echiquier2 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0,-2, 0, 0},
+                { 0, 0, 0, 0, 5, 0, 0, 0},
+                { 0, 0, 0, 4, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        assertFalse(DeplacementFou.fouMetEnEchecRoi(echiquier2,3,3));
+        int[][] echiquier3 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 1, 0, 0, 0,-2, 0, 0},
+                { 0, 0, 0, 0, 1, 0, 0, 0},
+                { 0, 0, 0, 4, 0, 0, 0, 0},
+                { 0, 0, 0, 0,-4, 0, 0, 0},
+                { 0, 5, 0, 0, 0, -2, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        assertFalse(DeplacementFou.fouMetEnEchecRoi(echiquier3,3,3));
+
+        int[][] echiquier4 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0,-4, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 2, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        assertTrue(DeplacementFou.fouMetEnEchecRoi(echiquier4,3,3));
+
+        int[][] echiquier5 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0,-2, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 4, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        assertTrue(DeplacementFou.fouMetEnEchecRoi(echiquier5,3,3));
+
+
+
+    }
 }

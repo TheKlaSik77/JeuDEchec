@@ -70,4 +70,75 @@ public class DeplacementTour {
         }
     }
 
+    public static boolean tourMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {
+
+        int roi;
+        if (echiquier[ligne][colonne] == 6) { // Fou blanc
+            roi = -2;
+        } else {
+            roi = 2;
+        }
+
+        // Bas
+        int ligneTestee = ligne + 1;
+
+        while (ligneTestee < 8){
+            if (echiquier[ligneTestee][colonne] != 0 && echiquier[ligneTestee][colonne] != roi){
+                break;
+            }
+            if (echiquier[ligneTestee][colonne] == roi){
+
+                return true;
+            }
+            ligneTestee++;
+        }
+        // Haut
+        ligneTestee = ligne - 1;
+
+        while (ligneTestee >= 0){
+            if (echiquier[ligneTestee][colonne] != 0 && echiquier[ligneTestee][colonne] != roi){
+
+                break;
+            }
+            if (echiquier[ligneTestee][colonne] == roi){
+
+                return true;
+            }
+            ligneTestee--;
+        }
+        // Gauche
+        int colonneTestee = colonne - 1;
+
+        while (colonneTestee >= 0){
+
+            if (echiquier[ligne][colonneTestee] != 0 && echiquier[ligne][colonneTestee] != roi){
+
+                break;
+            }
+            if (echiquier[ligne][colonneTestee] == roi){
+
+                return true;
+            }
+            colonneTestee--;
+
+        }
+        // Droite
+        colonneTestee = colonne + 1;
+        while (colonneTestee < 8){
+            if (echiquier[ligne][colonneTestee] != 0 && echiquier[ligne][colonneTestee] != roi){
+
+                break;
+            }
+            if (echiquier[ligne][colonneTestee] == roi){
+
+                return true;
+            }
+            colonneTestee++;
+
+        }
+        return false;
+    }
+
+
+
 }

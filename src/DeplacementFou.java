@@ -98,4 +98,80 @@ public class DeplacementFou {
     }
 
 
+    /**
+     * Renvoie True si la piece en (ligne, colonne) met le roi adverse en échec
+     * @param echiquier
+     * @param ligne
+     * @param colonne
+     * @return
+     */
+    public static boolean fouMetEnEchecRoi(int[][] echiquier, int ligne, int colonne){
+
+        int roi;
+        if (echiquier[ligne][colonne] == 4) { // Fou blanc
+            roi = -2;
+        } else {
+            roi = 2;
+        }
+
+        int ligneTestee = ligne + 1;
+        int colonneTestee = colonne + 1;
+        while(ligneTestee < 8 && colonneTestee < 8){ // Cas : diagonale sud-est
+            if (echiquier[ligneTestee][colonneTestee] != 0 && echiquier[ligneTestee][colonneTestee] != roi){
+                break;
+            }
+            if (echiquier[ligneTestee][colonneTestee] == roi){
+                return true;
+            }
+            ligneTestee++;
+            colonneTestee++;
+        }
+
+        ligneTestee = ligne + 1;
+        colonneTestee = colonne - 1;
+        while(ligneTestee < 8 && colonneTestee >= 0){ // Cas : diagonale sud-ouest
+            if (echiquier[ligneTestee][colonneTestee] != 0 && echiquier[ligneTestee][colonneTestee] != roi){
+
+                break;
+            }
+            if (echiquier[ligneTestee][colonneTestee] == roi){
+                return true;
+            }
+            ligneTestee++;
+            colonneTestee--;
+        }
+
+        ligneTestee = ligne - 1;
+        colonneTestee = colonne - 1;
+        while(ligneTestee >= 0 && colonneTestee >= 0){ // Cas : diagonale nord-ouest
+            if (echiquier[ligneTestee][colonneTestee] != 0 && echiquier[ligneTestee][colonneTestee] != roi){
+
+                break;
+            }
+            if (echiquier[ligneTestee][colonneTestee] == roi){
+                return true;
+            }
+            ligneTestee--;
+            colonneTestee--;
+        }
+
+        ligneTestee = ligne - 1;
+        colonneTestee = colonne + 1;
+        while(ligneTestee >= 0 && colonneTestee < 8){ // Cas : diagonale nord-est
+            if (echiquier[ligneTestee][colonneTestee] != 0 && echiquier[ligneTestee][colonneTestee] != roi){
+
+                break;
+            }
+            if (echiquier[ligneTestee][colonneTestee] == roi){
+                return true;
+            }
+            ligneTestee--;
+            colonneTestee++;
+        }
+
+        return false;
+
+    }
+
+
 }
