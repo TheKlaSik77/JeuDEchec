@@ -2,95 +2,92 @@ public class DeplacementPion {
 
     /**
      * @param echiquier
-     * @return vrai si le pion peut avancer de 2 cases
-     */
-    public static boolean Peutavancer2Cases(int[][] echiquier, int colonne) {
-        //si pion blanc ou noir (placé au positionnement initial)
-        return echiquier[6][colonne] == 1 || echiquier[1][colonne] == -1;
-    }
-
-    public static boolean PeutAvancer1Case(int[][] echiquier, int ligneArrivee, int colonneArrivee) {
-        if (MethodesDeplacements.caseVide(echiquier, ligneArrivee, colonneArrivee)) ;
-        return true;
-    }
-
-    /**
-     * @param echiquier
      * @param ligneDepart
      * @param colonneDepart
      * @param ligneArrivee
      * @param colonneArrivee
-     * @return vrai si le pion peut manger une pièce
+     * @return Vrai lorsque le pion peut se déplacer à la case de destination saisie, sinon retourne Faux
      */
-    public static boolean peutMangerPiece(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
-        if (echiquier[ligneDepart][colonneDepart] == 1) { // si pion blanc
-            if (!MethodesDeplacements.caseVide(echiquier, ligneArrivee, colonneArrivee) && echiquier[ligneArrivee][colonneArrivee] > 0) { // si ligne arrivee et colonne arrivee non vide et piece opposée dessus
-                if (echiquier[ligneDepart - 1][colonneDepart + 1] > 0) { // si à droite piece opposée dessus
-                    return true; // peut manger
-                } else if (echiquier[ligneDepart - 1][colonneDepart - 1] > 0) { // si à gauche piece opposée dessus
+
+    public static boolean pionPeutAllerCase(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
+
+        // cas déplacement standard
+        if (colonneArrivee == colonneDepart && echiquier[ligneArrivee][colonneArrivee] == 0) {
+            if (echiquier[ligneDepart][colonneDepart] == 1) {
+                if (ligneDepart == 6 && ligneArrivee == (ligneDepart - 2)) { //cas avance de 2 cases
+                    return true;
+                } else if (ligneArrivee == (ligneDepart - 1)) { //cas avance de 1 case
+                    return true;
+                }
+            }
+            if (echiquier[ligneDepart][colonneDepart] == -1) {
+                if (ligneDepart == 1 && ligneArrivee == (ligneDepart + 2)) {
+                    return true;
+                } else if (ligneArrivee == (ligneDepart + 1)) {
                     return true;
                 }
             }
         }
-        if (echiquier[ligneDepart][colonneDepart] == -1) { // si pion noir
-            if (!MethodesDeplacements.caseVide(echiquier, ligneArrivee, colonneArrivee) && echiquier[ligneArrivee][colonneArrivee] < 0) { // si ligne arrivee et colonne arrivee non vide et piece opposée dessus
-                // si à droite piece opposée dessus
-                if (echiquier[ligneDepart + 1][colonneDepart - 1] < 0) { // si à droite piece opposée dessus
+
+        //cas manger diagonale
+        if (echiquier[ligneDepart][colonneDepart] == 1) { // si pion blanc
+            if (echiquier[ligneArrivee][colonneArrivee] != 0 && echiquier[ligneArrivee][colonneArrivee] < 0) {
+                if (ligneArrivee == (ligneDepart - 1) && colonneArrivee == (colonneDepart + 1)) {//si à droite piece opposée dessus
                     return true;
-                } else return echiquier[ligneDepart - 1][colonneDepart + 1] < 0;
+                } else if (ligneArrivee == (ligneDepart - 1) && colonneArrivee == (colonneDepart - 1)) { // si à gauche piece opposée dessus
+                    return true;
+                }
+            }
+        }
+
+        //cas manger diagonale
+        if (echiquier[ligneDepart][colonneDepart] == -1) { // si pion noir
+            if (echiquier[ligneArrivee][colonneArrivee] != 0 && echiquier[ligneArrivee][colonneArrivee] > 0) {
+                // si à gauche piece opposée dessus
+                if (ligneArrivee == (ligneDepart + 1) && colonneArrivee == (colonneDepart - 1)) { // si à droite piece opposée dessus
+                    return true;
+                } else return ligneArrivee == (ligneDepart + 1) && colonneArrivee == (colonneDepart + 1);
             }
         }
         return false;
     }
 
+    public static void promotion(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
+        if (echiquier[ligneDepart][colonneDepart] == 1) {
+            if (pionPeutAllerCase(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee) && ligneArrivee == 0) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = 3;
+            }
+        }
+        if (echiquier[ligneDepart][colonneDepart] == -1) {
+            if (pionPeutAllerCase(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee) && ligneArrivee == 7) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = -3;
+
+            }
+
+        }
+
+    }
+
+
     /**
      * @param echiquier
      * @param ligneDepart
      * @param colonneDepart
      * @param ligneArrivee
-     * @param colonneArrivee Procédure qui déplace le pion à la bonne place
+     * @param colonneArrivee Si pionPeutAllerCase (int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) = true
+     *                       Cette méthode déplace la tour à la bonne place
      */
     public static void deplacerPion(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
 
-        // pour le pion blanc
         if (echiquier[ligneDepart][colonneDepart] == 1) {
-            if (Peutavancer2Cases(echiquier, 6)) {
-                echiquier[ligneArrivee][colonneArrivee] = 1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            } else {
-                if (PeutAvancer1Case(echiquier, ligneArrivee, colonneArrivee))
-                    echiquier[ligneArrivee][colonneArrivee] = 1;
-                    echiquier[ligneDepart][colonneDepart] = 0;
-            }
-
-            if (peutMangerPiece(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee)) {
-                echiquier[ligneDepart - 1][colonneDepart + 1] = 1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            } else {
-                echiquier[ligneDepart - 1][colonneDepart - 1] = 1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            }
-
-            // pour le pion noir
+            echiquier[ligneDepart][colonneDepart] = 0;
+            echiquier[ligneArrivee][colonneArrivee] = 1;
         } else if (echiquier[ligneDepart][colonneDepart] == -1) {
-            if (Peutavancer2Cases(echiquier, 1)) {
-                echiquier[ligneDepart + 2][colonneDepart] = 1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            } else {
-                if (PeutAvancer1Case(echiquier, ligneArrivee, colonneArrivee))
-                    echiquier[ligneDepart + 1][colonneDepart] = 1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            }
-            if (peutMangerPiece(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee)) {
-                echiquier[ligneDepart + 1][colonneDepart - 1] = -1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            } else {
-                echiquier[ligneDepart - 1][colonneDepart + 1] = -1;
-                echiquier[ligneDepart][colonneDepart] = 0;
-            }
-
+            echiquier[ligneDepart][colonneDepart] = 0;
+            echiquier[ligneArrivee][colonneArrivee] = -1;
         }
     }
-
 }
 
