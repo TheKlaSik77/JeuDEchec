@@ -94,11 +94,37 @@ public class MethodesDeplacements {
             return false;
     }
 
+    /**
+     * Test si la case d'arrivée est occupée par un pion du même camp (true), par du vide ou un ennemie(false)
+     * @param echiquier
+     * @param ligneDepart
+     * @param colonneDepart
+     * @param ligneArrivee
+     * @param colonneArrivee
+     * @return
+     */
     public static boolean testCaseArriveeDifferentCamp(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
         if (echiquier[ligneDepart][colonneDepart] > 0){
             return echiquier[ligneArrivee][colonneArrivee] <= 0;
         } else {
             return echiquier[ligneArrivee][colonneArrivee] >= 0;
+        }
+    }
+
+    public static boolean testPieceMetEnEchec(int[][] echiquier, int ligne, int colonne){
+
+        if (echiquier[ligne][colonne] == 6 || echiquier[ligne][colonne] == -6){
+            return DeplacementTour.tourMetEnEchecRoi(echiquier,ligne,colonne);
+        } else if (echiquier[ligne][colonne] == 5 || echiquier[ligne][colonne] == -5){
+            return DeplacementTour.cavalierMetEnEchecRoi(echiquier,ligne,colonne);
+        } else if (echiquier[ligne][colonne] == 4 || echiquier[ligne][colonne] == -4){
+            return DeplacementFou.fouMetEnEchecRoi(echiquier,ligne,colonne);
+        } else if (echiquier[ligne][colonne] == 3 || echiquier[ligne][colonne] == -3){
+            return DeplacementDame.dameMetEnEchecRoi(echiquier,ligne,colonne);
+        } else if (echiquier[ligne][colonne] == 1 || echiquier[ligne][colonne] == -1){
+            return DeplacementPion.pionMetEnEchecRoi(echiquier,ligne,colonne);
+        } else if (echiquier[ligne][colonne] == 2 || echiquier[ligne][colonne] == -2){
+            return DeplacementRoi.roiMetEnEchecRoi(echiquier,ligne,colonne);
         }
     }
 }
