@@ -116,7 +116,7 @@ public class MethodesDeplacements {
         if (echiquier[ligne][colonne] == 6 || echiquier[ligne][colonne] == -6){
             return DeplacementTour.tourMetEnEchecRoi(echiquier,ligne,colonne);
         } else if (echiquier[ligne][colonne] == 5 || echiquier[ligne][colonne] == -5){
-            return DeplacementTour.cavalierMetEnEchecRoi(echiquier,ligne,colonne);
+            return DeplacementCavalier.cavalierMetEnEchecRoi(echiquier,ligne,colonne);
         } else if (echiquier[ligne][colonne] == 4 || echiquier[ligne][colonne] == -4){
             return DeplacementFou.fouMetEnEchecRoi(echiquier,ligne,colonne);
         } else if (echiquier[ligne][colonne] == 3 || echiquier[ligne][colonne] == -3){
@@ -126,5 +126,6 @@ public class MethodesDeplacements {
         } else if (echiquier[ligne][colonne] == 2 || echiquier[ligne][colonne] == -2){
             return DeplacementRoi.roiMetEnEchecRoi(echiquier,ligne,colonne);
         }
+        return false;
     }
 }

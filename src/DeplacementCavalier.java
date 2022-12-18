@@ -36,7 +36,7 @@ public class DeplacementCavalier {
      * @param colonneArrivee
      *
      */
-    public static void seDeplace(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
+    public static void deplacerCavalier(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
         if (echiquier[ligneDepart][colonneDepart] == 5) {
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = 5;

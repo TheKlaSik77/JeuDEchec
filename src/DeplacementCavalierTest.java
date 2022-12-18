@@ -88,7 +88,7 @@ class DeplacementCavalierTest {
     }
 
     @Test
-    void seDeplace() {
+    void deplacerCavalier() {
 
         int[][] echiquier5 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -111,7 +111,7 @@ class DeplacementCavalierTest {
                 {0, 0,-1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
-        DeplacementCavalier.seDeplace(echiquier5, 4, 3, 2, 2);
+        DeplacementCavalier.deplacerCavalier(echiquier5, 4, 3, 2, 2);
         assertArrayEquals(echiquier6, echiquier5);
 
         int[][] echiquier7 = {
@@ -135,58 +135,7 @@ class DeplacementCavalierTest {
                 {0, 0,1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
-        DeplacementCavalier.seDeplace(echiquier7, 4, 3, 2, 4);
-        assertArrayEquals(echiquier8, echiquier7);
-    }
-    @Test
-    void seDeplace() {
-
-        int[][] echiquier5 = {
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0,-1, 0, 0, 0, 0, 0},
-                {0,-1, 0, 0, 0,-1, 0, 0},
-                {0, 0, 0, 5, 0, 0, 0, 0},
-                {0,-1, 0, 0, 0,-1, 0, 0},
-                {0, 0,-1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0}
-        };
-
-        int[][] echiquier6 = {
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 5, 0, 0, 0, 0, 0},
-                {0,-1, 0, 0, 0,-1, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0,-1, 0, 0, 0,-1, 0, 0},
-                {0, 0,-1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0}
-        };
-        DeplacementCavalier.seDeplace(echiquier5, 4, 3, 2, 2);
-        assertArrayEquals(echiquier6, echiquier5);
-
-        int[][] echiquier7 = {
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 0, 1, 0, 0},
-                {0, 0, 0, -5, 0, 0, 0, 0},
-                {0,1 , 0, 0, 0, 1, 0, 0},
-                {0, 0, 1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0}
-        };
-
-        int[][] echiquier8 = {
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 0, -5, 0, 0, 0},
-                {0,1, 0, 0, 0,1, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0,1, 0, 0, 0,1, 0, 0},
-                {0, 0,1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0}
-        };
-        DeplacementCavalier.seDeplace(echiquier7, 4, 3, 2, 4);
+        DeplacementCavalier.deplacerCavalier(echiquier7, 4, 3, 2, 4);
         assertArrayEquals(echiquier8, echiquier7);
     }
 

@@ -52,23 +52,7 @@ public class DeplacementPion {
         return false;
     }
 
-    public static void promotion(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
-        if (echiquier[ligneDepart][colonneDepart] == 1) {
-            if (pionPeutAllerCase(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee) && ligneArrivee == 0) {
-                echiquier[ligneDepart][colonneDepart] = 0;
-                echiquier[ligneArrivee][colonneArrivee] = 3;
-            }
-        }
-        if (echiquier[ligneDepart][colonneDepart] == -1) {
-            if (pionPeutAllerCase(echiquier, ligneDepart, ligneArrivee, colonneDepart, colonneArrivee) && ligneArrivee == 7) {
-                echiquier[ligneDepart][colonneDepart] = 0;
-                echiquier[ligneArrivee][colonneArrivee] = -3;
 
-            }
-
-        }
-
-    }
 
 
     /**
@@ -81,12 +65,20 @@ public class DeplacementPion {
      */
     public static void deplacerPion(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
 
-        if (echiquier[ligneDepart][colonneDepart] == 1) {
+        if (ligneArrivee == 0 && echiquier[ligneDepart][colonneDepart] == 1){
             echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = 1;
-        } else if (echiquier[ligneDepart][colonneDepart] == -1) {
+            echiquier[ligneArrivee][colonneArrivee] = 3;
+        } else if (ligneArrivee == 7 && echiquier[ligneDepart][colonneDepart] == -1){
             echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = -1;
+            echiquier[ligneArrivee][colonneArrivee] = -3;
+        } else {
+            if (echiquier[ligneDepart][colonneDepart] == 1) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = 1;
+            } else if (echiquier[ligneDepart][colonneDepart] == -1) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = -1;
+            }
         }
     }
     

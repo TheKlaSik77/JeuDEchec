@@ -116,11 +116,8 @@ public class DeplacementPionTest {
         };
         DeplacementPion.deplacerPion(echiquier3, 2, 3, 3, 3);
         assertArrayEquals(echiquier4, echiquier3);
-    }
 
-    @Test
-    void testPromotion() {
-        int[][] echiquier1 = {
+        int[][] echiquier5 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 1, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -131,7 +128,7 @@ public class DeplacementPionTest {
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        int[][] echiquier2 = {
+        int[][] echiquier6 = {
                 {0, 0, 0, 0, 0, 3, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -142,11 +139,11 @@ public class DeplacementPionTest {
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        DeplacementPion.deplacerPion(echiquier1, 1, 5, 0, 5);
-        assertArrayEquals(echiquier2, echiquier1);
+        DeplacementPion.deplacerPion(echiquier5, 1, 5, 0, 5);
+        assertArrayEquals(echiquier6, echiquier5);
 
 
-        int[][] echiquier3 = {
+        int[][] echiquier7 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -157,8 +154,8 @@ public class DeplacementPionTest {
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        int[][] echiquier4 = {
-                {0, 0, 0, 0, 0, 3, 0, 0},
+        int[][] echiquier8 = {
+                {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -167,8 +164,8 @@ public class DeplacementPionTest {
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, -3, 0, 0}
         };
-        DeplacementPion.deplacerPion(echiquier3, 6, 5, 7, 5);
-        assertArrayEquals(echiquier4, echiquier3);
+        DeplacementPion.deplacerPion(echiquier7, 6, 5, 7, 5);
+        assertArrayEquals(echiquier8, echiquier7);
     }
     
     @Test
