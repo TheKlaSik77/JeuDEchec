@@ -89,5 +89,22 @@ public class DeplacementPion {
             echiquier[ligneArrivee][colonneArrivee] = -1;
         }
     }
+    
+     /**
+     * 
+     * @param echiquier
+     * @param ligne
+     * @param colonne
+     * @return vrai si le roi est mis en échec, faux sinon
+     */
+    public static boolean pionMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {
+        
+        if (echiquier[ligne][colonne] == 1) {
+            return echiquier[ligne - 1][colonne + 1] == -2 || echiquier[ligne - 1][colonne - 1] == -2;
+        } else if (echiquier[ligne][colonne] == -1) {
+            return echiquier[ligne + 1][colonne + 1] == 2 || echiquier[ligne + 1][colonne - 1] == 2;
+        }
+        return false;
+    }
 }
 
