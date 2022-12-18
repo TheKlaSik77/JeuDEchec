@@ -95,7 +95,7 @@ public class DeplacementPion {
      * @param echiquier
      * @param ligne
      * @param colonne
-     * @return vrai si le roi est mis en échec, faux sinon
+     * @return vrai si le roi est mis en échec; faux sinon
      */
     public static boolean pionMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {
         
