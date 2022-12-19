@@ -1,9 +1,25 @@
 public class DeplacementRoi {
 
-    public static boolean peutRoque = true;
+    public static boolean peutPetitRoqueBlanc = true;
+    public static boolean peutPetitRoqueNoir = true;
+    public static boolean peutGrandRoqueBlanc = true;
+    public static boolean peutGrandRoqueNoir = true;
 
-    public static void nePeutPlusRoque() {
-        peutRoque = false;
+    public static void nePeutPlusGrandRoque(int joueur) {
+
+        if (joueur == 1){
+            peutGrandRoqueBlanc = false;
+        } else if(joueur == 2){
+            peutGrandRoqueNoir = false;
+        }
+    }
+    public static void nePeutPlusPetitRoque(int joueur) {
+
+        if (joueur == 1){
+            peutPetitRoqueBlanc = false;
+        } else if(joueur == 2){
+            peutPetitRoqueNoir = false;
+        }
     }
 
     /**
@@ -16,6 +32,12 @@ public class DeplacementRoi {
      * @return
      */
     public static boolean roiPeutAller(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
+
+        //Gerer Cas Roque:
+        /*
+        Tester si peutRoque en fonction de la piece sur les coordonnées de départ et Tester si cases entre vides
+
+         */
 
         if (!(ligneArrivee == ligneDepart + 1 || ligneArrivee == ligneDepart - 1 || colonneArrivee == colonneDepart + 1 || colonneArrivee == colonneDepart - 1)){
             return false;
@@ -50,6 +72,7 @@ public class DeplacementRoi {
     }
 
     public static void deplacerRoi(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
+        // Cas a part de déplacement petit roque ou grand roque
 
         if (echiquier[ligneDepart][colonneDepart] == 2){
             echiquier[ligneDepart][colonneDepart] = 0;
@@ -57,6 +80,14 @@ public class DeplacementRoi {
         } else if (echiquier[ligneDepart][colonneDepart] == -2){
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = -2;
+        }
+        if (echiquier[ligneDepart][colonneDepart] == 2){
+            nePeutPlusPetitRoque(1);
+            nePeutPlusGrandRoque(1);
+        } else if (echiquier[ligneDepart][colonneDepart] == -2){
+            nePeutPlusPetitRoque(2);
+            nePeutPlusGrandRoque(2);
+
         }
     }
 
@@ -75,6 +106,9 @@ public class DeplacementRoi {
         return false;
     }
 
+    // Fonction mat à faire et roque
+
+    
 
 
 }

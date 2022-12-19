@@ -68,6 +68,8 @@ public class DeplacementTour {
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = -6;
         }
+
+        // Mettre à false un des deux roque du roi si tour se déplace en premiere
     }
 
     public static boolean tourMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {
