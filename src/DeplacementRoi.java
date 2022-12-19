@@ -63,7 +63,7 @@ public class DeplacementRoi {
     public static boolean roiMetEnEchecRoi(int[][] echiquier, int ligne, int colonne){
 
         int roi;
-        if (echiquier[ligne][colonne] == 2) { // Roi blanche
+        if (echiquier[ligne][colonne] == 2) { // Roi blanc
             roi = -2;
         } else {
             roi = 2;
