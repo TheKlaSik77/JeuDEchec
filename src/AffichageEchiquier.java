@@ -58,7 +58,7 @@ public class AffichageEchiquier{
     }
     public static void afficherEchiquier(int[][] echiquier){
 
-        System.out.println("======================================================\n");
+        System.out.println("\n======================================================\n");
         String pieceSurCase = "";
         System.out.println("  A     B     C     D     E     F     G     H ");
         System.out.println();
@@ -118,8 +118,8 @@ public class AffichageEchiquier{
                 System.out.println("-----------------------------------------------");
             }
         }
-        System.out.println();
-        System.out.println("======================================================");
-        System.out.println("\n\n\n\n");
+
+        System.out.println("\n======================================================\n");
+
     }
 }

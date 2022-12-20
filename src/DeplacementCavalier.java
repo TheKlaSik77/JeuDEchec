@@ -8,7 +8,7 @@ public class DeplacementCavalier {
      * @param colonneArrivee
      * @return Vrai lorsque le cavalier peut se déplacer à la case de destination saisie, sinon retourne Faux
      */
-    public static boolean cavalierPeutAller(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
+    public static boolean cavalierPeutAllerCase(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
 
         if (echiquier[ligneDepart][colonneDepart] == 5 && echiquier[ligneArrivee][colonneArrivee] <= 0
                 || echiquier[ligneDepart][colonneDepart] == -5 && echiquier[ligneArrivee][colonneArrivee] >= 0) {

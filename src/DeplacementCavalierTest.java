@@ -18,14 +18,14 @@ class DeplacementCavalierTest {
                 {0, 0,-1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 2, 2));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 2, 4));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 3, 1));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 3, 5));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 6, 2));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 5, 1));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 5, 5));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier1, 4, 3, 6, 4));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 2, 2));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 2, 4));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 3, 1));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 3, 5));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 6, 2));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 5, 1));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 5, 5));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 6, 4));
 
         int[][] echiquier2 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -37,14 +37,14 @@ class DeplacementCavalierTest {
                 {0, 0, 1, 0, 1, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 2, 2));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 2, 4));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 3, 1));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 3, 5));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 6, 2));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 5, 1));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 5, 5));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier2, 4, 3, 6, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 2, 2));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 2, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 3, 1));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 3, 5));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 6, 2));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 5, 1));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 5, 5));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier2, 4, 3, 6, 4));
 
         int[][] echiquier3 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -56,14 +56,14 @@ class DeplacementCavalierTest {
                 {0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 2, 2));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 2, 4));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 3, 1));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 3, 5));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 6, 2));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 5, 1));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 5, 5));
-        assertTrue(DeplacementCavalier.cavalierPeutAller(echiquier3, 4, 3, 6, 4));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 2, 2));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 2, 4));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 3, 1));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 3, 5));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 6, 2));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 5, 1));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 5, 5));
+        assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier3, 4, 3, 6, 4));
 
         int[][] echiquier4 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},
@@ -76,14 +76,14 @@ class DeplacementCavalierTest {
                 {0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 2, 2));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 2, 4));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 3, 1));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 3, 5));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 6, 2));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 5, 1));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 5, 5));
-        assertFalse(DeplacementCavalier.cavalierPeutAller(echiquier4, 4, 3, 6, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 2, 2));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 2, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 3, 1));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 3, 5));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 6, 2));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 5, 1));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 5, 5));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier4, 4, 3, 6, 4));
 
     }
 

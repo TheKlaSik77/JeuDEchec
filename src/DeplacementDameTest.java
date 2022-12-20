@@ -17,17 +17,17 @@ class DeplacementDameTest {
                 { 0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,0,3));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,7,3));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,3,0));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,3,7));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,7,7));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,0,0));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,0,0));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,0,6));
-        assertTrue(DeplacementDame.damePeutAller(echiquier1,3,3,6,0));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,0,3));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,7,3));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,3,0));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,3,7));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,7,7));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,0,0));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,0,0));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,0,6));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier1,3,3,6,0));
 
-        assertFalse(DeplacementDame.damePeutAller(echiquier1,3,3,4,7));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier1,3,3,4,7));
 
 
         int[][] echiquier2 = {
@@ -41,17 +41,17 @@ class DeplacementDameTest {
                 { 0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-        assertTrue(DeplacementDame.damePeutAller(echiquier2,3,3,4,4));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,7,3));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,3,0));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,3,7));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,7,7));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,0,0));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,0,0));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,0,6));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,6,0));
-        assertFalse(DeplacementDame.damePeutAller(echiquier2,3,3,2,2));
-        assertFalse(DeplacementDame.damePeutAller(echiquier1,3,3,4,7));
+        assertTrue(DeplacementDame.damePeutAllerCase(echiquier2,3,3,4,4));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,7,3));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,3,0));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,3,7));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,7,7));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,0,0));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,0,0));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,0,6));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,6,0));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier2,3,3,2,2));
+        assertFalse(DeplacementDame.damePeutAllerCase(echiquier1,3,3,4,7));
 
     }
 

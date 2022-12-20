@@ -16,18 +16,20 @@ public class MainKylian{
 
         AffichageEchiquier.afficherEchiquier(echiquier);
 
-        if (DeplacementTour.tourPeutAllerCase(echiquier, 7, 0, 4, 0)){
-            DeplacementTour.deplacerTour(echiquier, 7, 0, 4, 0);
-        }
+        int[] tabDeplacements = {-1, -1, -1, -1};
+        int joueur = 1;
 
-        AffichageEchiquier.afficherEchiquier(echiquier);
+        MethodesDeplacements.demandeDeplacements(echiquier, tabDeplacements, joueur);
 
-        System.out.println("\n\n\n\n");
-        if (DeplacementFou.fouPeutAllerCase(echiquier, 7, 5, 4, 2)){
-            DeplacementFou.deplacerFou(echiquier, 7, 5, 4, 2);
-        }
+        int ligneDepart = tabDeplacements[0];
+        int colonneDepart = tabDeplacements[1];
+        int ligneArrivee = tabDeplacements[2];
+        int colonneArrivee = tabDeplacements[3];
 
-        AffichageEchiquier.afficherEchiquier(echiquier);
+        System.out.println("Ligne départ : " + ligneDepart);
+        System.out.println("Colonne départ : " + colonneDepart);
+        System.out.println("Ligne Arrivee : " + ligneArrivee);
+        System.out.println("Colonne Arrivee : " + colonneArrivee);
 
 
     }

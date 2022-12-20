@@ -31,7 +31,7 @@ public class DeplacementRoi {
      * @param colonneArrivee
      * @return
      */
-    public static boolean roiPeutAller(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
+    public static boolean roiPeutAllerCase(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
 
         //Gerer Cas Roque:
         /*
@@ -108,7 +108,7 @@ public class DeplacementRoi {
 
     // Fonction mat à faire et roque
 
-    
+
 
 
 }

@@ -8,12 +8,15 @@ public class MethodesDeplacements {
     public static int saisieCoordonneeLigneDepart() {
         Scanner sc = new Scanner(System.in);
         int saisieLigne;
-
-        do {
-            System.out.print("Entrer les coordonnées de la ligne de la case de départ (entre 1 et 8) : ");
+        System.out.print("Entrer les coordonnées de la ligne de la case de départ (entre 1 et 8) : ");
+        saisieLigne = sc.nextInt();
+        System.out.println("\n======================================================\n");
+        while (saisieLigne < 1 || saisieLigne > 8){
+            System.out.print("Erreur! Cette case n'est pas valide!\nEntrer les coordonnées de la ligne de la case de départ (entre 1 et 8) : ");
             saisieLigne = sc.nextInt();
+            System.out.println("\n======================================================\n");
 
-        } while (saisieLigne < 1 || saisieLigne > 8);
+        }
 
         return saisieLigne - 1;
     }
@@ -27,13 +30,14 @@ public class MethodesDeplacements {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrer les coordonnées de la colonne de la case de départ (entre A et H) : ");
         String saisieColonne = sc.nextLine();
+        System.out.println("\n======================================================\n");
         saisieColonne = saisieColonne.toUpperCase();
         int nCase = saisieColonne.charAt(0) - 64;
 
         while (saisieColonne.length() > 1 || nCase < 1 || nCase > 8) {
-            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case de départ (entre A et H) : ");
-
+            System.out.print("Erreur! Cette case n'est pas valide!\nEntrer les coordonnées de la colonne de la case de départ (entre A et H) : ");
             saisieColonne = sc.nextLine();
+            System.out.println("\n======================================================\n");
             saisieColonne = saisieColonne.toUpperCase();
             nCase = saisieColonne.charAt(0) - 64;
             // Permet de mettre les caractères en maj puis de calculer a quoi correspond la case par rapport au code ascii
@@ -47,12 +51,16 @@ public class MethodesDeplacements {
     public static int saisieCoordonneeLigneArrivee() {
         Scanner sc = new Scanner(System.in);
         int saisieLigne;
+        System.out.print("Entrer les coordonnées de la ligne de la case d'arrivée (entre 1 et 8) : ");
+        saisieLigne = sc.nextInt();
+        System.out.println("\n======================================================\n");
 
-        do {
-            System.out.print("Entrer les coordonnées de la ligne de la case d'arrivée (entre 1 et 8) : ");
+        while (saisieLigne < 1 || saisieLigne > 8) {
+            System.out.print("Erreur! Cette case n'est pas valide!\nEntrer les coordonnées de la ligne de la case d'arrivée (entre 1 et 8) : ");
             saisieLigne = sc.nextInt();
+            System.out.println("\n======================================================\n");
 
-        } while (saisieLigne < 1 || saisieLigne > 8);
+        }
 
         return saisieLigne - 1;
     }
@@ -68,7 +76,7 @@ public class MethodesDeplacements {
         int nCase = saisieColonne.charAt(0) - 64;
 
         while (saisieColonne.length() > 1 || nCase < 1 || nCase > 8) {
-            System.out.print("Erreur! Entrer les coordonnées de la colonne de la case d'arrivée (entre A et H) : ");
+            System.out.print("Erreur! Cette case n'est pas valide!\nEntrer les coordonnées de la colonne de la case d'arrivée (entre A et H) : ");
 
             saisieColonne = sc.nextLine();
             saisieColonne = saisieColonne.toUpperCase();
@@ -111,6 +119,13 @@ public class MethodesDeplacements {
         }
     }
 
+    /**
+     * Teste si l'emplacement ligne, colonne met en échec le roi adverse.
+     * @param echiquier
+     * @param ligne
+     * @param colonne
+     * @return
+     */
     public static boolean testPieceMetEnEchec(int[][] echiquier, int ligne, int colonne){
 
         if (echiquier[ligne][colonne] == 6 || echiquier[ligne][colonne] == -6){
@@ -127,5 +142,85 @@ public class MethodesDeplacements {
             return DeplacementRoi.roiMetEnEchecRoi(echiquier,ligne,colonne);
         }
         return false;
+    }
+
+    /**
+     * Met à jour les variables lignes et colonnes d'arrivée et de départ en testant si le déplacement est possible et si les coordonnées de départ et d'arrivée sont bien différentes. Enfin, demande une confirmation du coup.
+     * @param echiquier
+     * @param tabDeplacements
+     *      Correspond aux deplacements indices 0 pour ligne depart, 1 pour colonne départ, 2 pour ligne arrivée, 3 pour colonne arrivée
+     * @param joueur
+     */
+    public static void demandeDeplacements(int[][] echiquier, int[] tabDeplacements, int joueur){
+
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+
+        boolean confirmation = false;
+        boolean emplacementDepartValide = false;
+        boolean emplacementArriveeValide = false;
+
+        while (!confirmation){
+            while(!emplacementArriveeValide){
+                while (!emplacementDepartValide) {
+                    tabDeplacements[0] = saisieCoordonneeLigneDepart();
+                    tabDeplacements[1] = saisieCoordonneeColonneDepart();
+                    if (joueur == 1) {
+                        if (echiquier[tabDeplacements[0]][tabDeplacements[1]] > 0) {
+                            emplacementDepartValide = true;
+                        }
+                    } else if (joueur == 2) {
+                        if (echiquier[tabDeplacements[0]][tabDeplacements[1]] < 0) {
+                            emplacementDepartValide = true;
+                        }
+                    }
+                    if (!emplacementDepartValide) {
+                        System.out.println("Erreur! La position renseignée ne correspond pas à une de vos pièce.\nVeuillez recommencer en ré-indiquant la pièce de départ.");
+                        System.out.println("\n======================================================\n");
+                    }
+                }
+                tabDeplacements[2] = saisieCoordonneeLigneArrivee();
+                tabDeplacements[3] = saisieCoordonneeColonneArrivee();
+                if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -1 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 1) {
+                    if (DeplacementPion.pionPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])) {
+                        emplacementArriveeValide = true;
+                    }
+                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -2 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 2){
+                    if (DeplacementRoi.roiPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
+                        emplacementArriveeValide = true;
+                    }
+                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -3 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 3){
+                    if (DeplacementDame.damePeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
+                        emplacementArriveeValide = true;
+                    }
+                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -4 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 4){
+                    if (DeplacementFou.fouPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
+                        emplacementArriveeValide = true;
+                    }
+                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -5 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 5){
+                    if (DeplacementCavalier.cavalierPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
+                        emplacementArriveeValide = true;
+                    }
+                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -6 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 6){
+                    if (DeplacementTour.tourPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
+                        emplacementArriveeValide = true;
+                    }
+                }
+                if (!emplacementArriveeValide){
+                    System.out.println("Erreur! La position d'arrivée renseignée est identique ou ne permet pas un coup valide.\nVeuillez recommencer en ré-indiquant la pièce de départ.");
+                    System.out.println("\n======================================================\n");
+                }
+            }
+            System.out.println("Voulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
+            int choix = scanner.nextInt();
+            System.out.println("\n======================================================\n");
+            while (choix != 0 && choix != 1){
+                System.out.println("Erreur, choix incorrect!\n\nVoulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
+                choix = scanner.nextInt();
+                System.out.println("\n======================================================\n");
+            }
+            if (choix == 1){
+                confirmation = true;
+            }
+        }
     }
 }
