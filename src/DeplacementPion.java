@@ -92,9 +92,9 @@ public class DeplacementPion {
     public static boolean pionMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {
         
         if (echiquier[ligne][colonne] == 1) {
-            return echiquier[ligne - 1][colonne + 1] == -2 || echiquier[ligne - 1][colonne - 1] == -2;
+            return (ligne-1 >= 0 && colonne-1 >= 0 && ligne+1 <= 7 && colonne+1 <= 7) && (echiquier[ligne - 1][colonne + 1] == -2 || echiquier[ligne - 1][colonne - 1] == -2);
         } else if (echiquier[ligne][colonne] == -1) {
-            return echiquier[ligne + 1][colonne + 1] == 2 || echiquier[ligne + 1][colonne - 1] == 2;
+            return (ligne-1 >= 0 && colonne-1 >= 0 && ligne+1 <= 7 && colonne+1 <= 7) && (echiquier[ligne + 1][colonne + 1] == 2 || echiquier[ligne + 1][colonne - 1] == 2);
         }
         return false;
     }

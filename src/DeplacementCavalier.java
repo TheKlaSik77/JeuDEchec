@@ -61,16 +61,18 @@ public class DeplacementCavalier {
             roi = 2;
         }
 
-        if (echiquier[ligne - 2][colonne - 1] == roi
+        if ( ligne - 2 >= 0 && ligne + 2 <= 7 && colonne -1 >= 0 && colonne + 1 <= 7
+                && (echiquier[ligne - 2][colonne - 1] == roi
                 || echiquier[ligne - 2][colonne + 1] == roi
                 || echiquier[ligne + 2][colonne - 1] == roi
-                || echiquier[ligne + 2][colonne + 1] == roi) {
+                || echiquier[ligne + 2][colonne + 1] == roi)) {
             return true;
         }
-        if (echiquier[ligne - 1][colonne - 2] == roi
+        if ( ligne - 1 >= 0 && ligne + 1 <= 7 && colonne - 2 >= 0 && colonne + 2 <= 7
+                && (echiquier[ligne - 1][colonne - 2] == roi
                 || echiquier[ligne - 1][colonne + 2] == roi
                 || echiquier[ligne + 1][colonne - 2] == roi
-                || echiquier[ligne + 1][colonne + 2] == roi) {
+                || echiquier[ligne + 1][colonne + 2] == roi)) {
             return true;
         }
         return false;

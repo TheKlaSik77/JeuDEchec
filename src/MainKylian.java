@@ -13,7 +13,7 @@ public class MainKylian{
                 {6, 5, 4, 3, 2, 4, 5, 6}
         };
 
-
+        /*
         AffichageEchiquier.afficherEchiquier(echiquier);
 
         int[] tabDeplacements = {-1, -1, -1, -1};
@@ -30,7 +30,19 @@ public class MainKylian{
         System.out.println("Colonne départ : " + colonneDepart);
         System.out.println("Ligne Arrivee : " + ligneArrivee);
         System.out.println("Colonne Arrivee : " + colonneArrivee);
-
-
+        */
+        int[][] echiquier1 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0,-4, 0, 0, 0},
+                { 0, 0, 0, 0, 0,-3, 0, 0},
+                { 0, 0, 0, 2, 0, 0, 0, 0},
+                { 0, 0, 0, 5, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        boolean choix1 = DeplacementRoi.roiPeutAllerCase(echiquier1,3,3,3,4);
+        boolean choix2 = DeplacementRoi.roiPeutAllerCase(echiquier1,3,3,2,3);
+        System.out.println(choix1 + " " + choix2);
     }
 }

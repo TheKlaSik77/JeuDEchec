@@ -29,4 +29,39 @@ class MethodesDeplacementsTest {
         assertFalse(MethodesDeplacements.testCaseArriveeDifferentCamp(echiquier1,3,3,3,4));
         assertTrue(MethodesDeplacements.testCaseArriveeDifferentCamp(echiquier1,3,3,3,2));
     }
+
+    @Test
+    void testPieceMetEnEchec(){
+        int[][] echiquier1 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0,-4, 0, 0, 0},
+                { 0, 0, 0, 2, 0,-3, 0, 0},
+                { 0, 0, 0, 1, 0, 0, 0, 0},
+                { 0, 0, 0,-5, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 4, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0,-2, 0}
+        };
+
+        assertFalse(MethodesDeplacements.testPieceMetEnEchec(echiquier1,4,3));
+        assertTrue(MethodesDeplacements.testPieceMetEnEchec(echiquier1,1,4));
+        assertTrue(MethodesDeplacements.testPieceMetEnEchec(echiquier1,2,5));
+        assertFalse(MethodesDeplacements.testPieceMetEnEchec(echiquier1,2,3));
+
+
+        int[][] echiquier2 = {
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0,-4, 0, 0, 0},
+                { 0, 0, 0, 2, 0,-3, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 5, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+
+        assertTrue(MethodesDeplacements.testPieceMetEnEchec(echiquier2,1,4));
+        assertTrue(MethodesDeplacements.testPieceMetEnEchec(echiquier2,2,5));
+
+    }
 }

@@ -103,7 +103,7 @@ public class MethodesDeplacements {
     }
 
     /**
-     * Test si la case d'arrivée est occupée par un pion du même camp (true), par du vide ou un ennemie(false)
+     * Test si la case d'arrivée est occupée par un pion du même camp (true), par du vide ou par un ennemi (false)
      * @param echiquier
      * @param ligneDepart
      * @param colonneDepart
@@ -141,6 +141,7 @@ public class MethodesDeplacements {
         } else if (echiquier[ligne][colonne] == 2 || echiquier[ligne][colonne] == -2){
             return DeplacementRoi.roiMetEnEchecRoi(echiquier,ligne,colonne);
         }
+
         return false;
     }
 
@@ -162,8 +163,8 @@ public class MethodesDeplacements {
         while (!confirmation){
             while(!emplacementArriveeValide){
                 while (!emplacementDepartValide) {
-                    tabDeplacements[0] = saisieCoordonneeLigneDepart();
                     tabDeplacements[1] = saisieCoordonneeColonneDepart();
+                    tabDeplacements[0] = saisieCoordonneeLigneDepart();
                     if (joueur == 1) {
                         if (echiquier[tabDeplacements[0]][tabDeplacements[1]] > 0) {
                             emplacementDepartValide = true;
@@ -178,8 +179,8 @@ public class MethodesDeplacements {
                         System.out.println("\n======================================================\n");
                     }
                 }
-                tabDeplacements[2] = saisieCoordonneeLigneArrivee();
                 tabDeplacements[3] = saisieCoordonneeColonneArrivee();
+                tabDeplacements[2] = saisieCoordonneeLigneArrivee();
                 if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -1 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 1) {
                     if (DeplacementPion.pionPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])) {
                         emplacementArriveeValide = true;

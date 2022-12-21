@@ -39,36 +39,50 @@ public class DeplacementRoi {
 
          */
 
-        if (!(ligneArrivee == ligneDepart + 1 || ligneArrivee == ligneDepart - 1 || colonneArrivee == colonneDepart + 1 || colonneArrivee == colonneDepart - 1)){
+        if (!((ligneArrivee >= ligneDepart - 1 && ligneArrivee <= ligneDepart + 1) && (colonneArrivee >= colonneDepart - 1 && colonneArrivee <= colonneDepart + 1))){
+
             return false;
         }
+        if (!MethodesDeplacements.testCaseArriveeDifferentCamp(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee)){
 
-        int[][] echiquierTemp = echiquier;
-        echiquierTemp[ligneDepart][colonneDepart] = 0;
+            return false;
+        }
+        int[][] echiquierTemp = new int[8][8];
+        for (int ligne = 0 ; ligne < echiquierTemp.length ; ligne++) {
+            for (int colonne = 0; colonne < echiquierTemp[ligne].length; colonne++) {
+                echiquierTemp[ligne][colonne] = echiquier[ligne][colonne];
+            }
+        }
+        // On déplace le roi dans l'échiquier temporaire pour tester si échec
         echiquierTemp[ligneArrivee][colonneArrivee] = echiquier[ligneDepart][colonneDepart];
 
-        if(echiquier[ligneDepart][colonneDepart] == 2) {
-            for (int ligne = 0; ligne < echiquierTemp.length; ligne++) {
-                for (int colonne = 0; colonne < echiquierTemp[ligne].length; colonne++) {
-                    if (echiquierTemp[ligne][colonne] < 0) {
-                        if (MethodesDeplacements.testPieceMetEnEchec(echiquierTemp, ligne, colonne)) {
+        echiquierTemp[ligneDepart][colonneDepart] = 0;
+
+        // On teste si une des pièces adverses met en échec le roi
+        for (int ligne = 0 ; ligne < echiquierTemp.length ; ligne++){
+            for (int colonne = 0 ; colonne < echiquierTemp[ligne].length ; colonne++){
+                if (echiquierTemp[ligneArrivee][colonneArrivee] == 2){
+                    if (echiquierTemp[ligne][colonne] < 0){
+                        if (MethodesDeplacements.testPieceMetEnEchec(echiquierTemp,ligne,colonne)){
+
+
                             return false;
                         }
                     }
-                }
-            }
-        } else {
-            for (int ligne = 0; ligne < echiquierTemp.length; ligne++) {
-                for (int colonne = 0; colonne < echiquierTemp[ligne].length; colonne++) {
-                    if (echiquierTemp[ligne][colonne] > 0) {
-                        if (MethodesDeplacements.testPieceMetEnEchec(echiquierTemp, ligne, colonne)) {
+                } else if (echiquierTemp[ligneArrivee][colonneArrivee] == -2) {
+                    if (echiquierTemp[ligne][colonne] > 0){
+                        if (MethodesDeplacements.testPieceMetEnEchec(echiquierTemp,ligne,colonne)){
+
+
                             return false;
                         }
                     }
                 }
             }
         }
+
         return true;
+
     }
 
     public static void deplacerRoi(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
@@ -100,13 +114,57 @@ public class DeplacementRoi {
             roi = 2;
         }
 
-        if (echiquier[ligne+1][colonne] == roi || echiquier[ligne-1][colonne] == roi || echiquier[ligne][colonne+1] == roi || echiquier[ligne][colonne-1] == roi || echiquier[ligne+1][colonne+1] == roi || echiquier[ligne+1][colonne-1] == roi || echiquier[ligne-1][colonne+1] == roi || echiquier[ligne-1][colonne-1] == roi){
+        if ((ligne + 1 <= 7 && ligne - 1 >= 0 && colonne + 1 <= 7 && colonne - 1 >= 0) && (echiquier[ligne+1][colonne] == roi || echiquier[ligne-1][colonne] == roi || echiquier[ligne][colonne+1] == roi || echiquier[ligne][colonne-1] == roi || echiquier[ligne+1][colonne+1] == roi || echiquier[ligne+1][colonne-1] == roi || echiquier[ligne-1][colonne+1] == roi || echiquier[ligne-1][colonne-1] == roi)){
             return true;
         }
         return false;
     }
 
-    // Fonction mat à faire et roque
+    /**
+     * Teste si le roi de joueur est echec et mat (Attention, ne teste pas si la position initiale est en échec, il faudra tester ça dans le déroulement car cette fonction sert aussi pour savoir si la partie est nulle).
+     * @param echiquier
+     * @param joueur
+     * @return
+     */
+
+    public static boolean estEchecEtMat(int[][] echiquier, int joueur){
+        int roi = -2;
+        int ligneRoi = 0;
+        int colonneRoi = 0;
+
+        if (joueur == 1){
+            roi = 2;
+        }
+
+        for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
+            for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
+                if (echiquier[ligne][colonne] == roi){
+                    ligneRoi = ligne;
+                    colonneRoi = colonne;
+                    break;
+                }
+            }
+        }
+        if ((colonneRoi+1 <= 7 && ligneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi+1))){
+            return false;
+        } else if ((colonneRoi-1 >= 0 && ligneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi-1))){
+            return false;
+        } else if ((ligneRoi+1 <= 7 && colonneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi-1))){
+            return false;
+        } else if ((ligneRoi-1 >= 0 && colonneRoi+1 <=7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi+1))){
+            return false;
+        } else if ((colonneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi,colonneRoi+1))){
+            return false;
+        } else if ((colonneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi,colonneRoi-1))){
+            return false;
+        } else if ((ligneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi))){
+            return false;
+        } else if ((ligneRoi-1 >=0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi))){
+            return false;
+        }
+        return true;
+
+    }
 
 
 
