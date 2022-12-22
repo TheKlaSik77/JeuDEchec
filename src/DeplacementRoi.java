@@ -1,3 +1,5 @@
+import java.nio.file.attribute.AclFileAttributeView;
+
 public class DeplacementRoi {
 
     public static boolean peutPetitRoqueBlanc = true;
@@ -121,7 +123,41 @@ public class DeplacementRoi {
     }
 
     /**
-     * Teste si le roi de joueur est echec et mat (Attention, ne teste pas si la position initiale est en échec, il faudra tester ça dans le déroulement car cette fonction sert aussi pour savoir si la partie est nulle).
+     * Teste si le roi du joueur est mis en échec par une des pièces ennemies
+     * @param echiquier
+     * @param joueur
+     * @return
+     */
+    public static boolean roiEstEnEchec(int[][] echiquier, int joueur){
+
+        if (joueur == 1){
+            for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
+                for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
+                    if (echiquier[ligne][colonne] < 0){
+                        if (MethodesDeplacements.testPieceMetEnEchec(echiquier,ligne,colonne)){
+                            System.out.println("ligne : " + ligne + ", colonne : " + colonne);
+                            return true;
+                        }
+                    }
+                }
+            }
+        } else if (joueur == 2){
+            for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
+                for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
+                    if (echiquier[ligne][colonne] > 0){
+                        if (MethodesDeplacements.testPieceMetEnEchec(echiquier,ligne,colonne)){
+                            System.out.println("ligne : " + ligne + ", colonne : " + colonne);
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Teste si le roi de joueur est échec et mat.
      * @param echiquier
      * @param joueur
      * @return
@@ -129,39 +165,68 @@ public class DeplacementRoi {
 
     public static boolean estEchecEtMat(int[][] echiquier, int joueur){
         int roi = -2;
-        int ligneRoi = 0;
-        int colonneRoi = 0;
-
         if (joueur == 1){
             roi = 2;
         }
 
-        for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
-            for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
-                if (echiquier[ligne][colonne] == roi){
-                    ligneRoi = ligne;
-                    colonneRoi = colonne;
-                    break;
+        // Si pas d'echec sur le roi alors pas d'echec et mat
+        if (!roiEstEnEchec(echiquier, joueur)){
+            return false;
+        }
+        int[][] echiquierTemp = new int[echiquier.length][echiquier.length];
+
+        MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier,echiquierTemp);
+        if (joueur == 1){
+            // On parcourt chaque pièce du joueur
+            for (int lignePiece = 0 ; lignePiece < echiquier.length ; lignePiece++){
+                for (int colonnePiece = 0 ; colonnePiece < echiquier[lignePiece].length; colonnePiece++){
+                    // Si on détecte une pièce du joueur, on teste tous les déplacements possibles et on regarde en déplaçant dans un échiquier temporaire si l'échiquier temporaire est en échec, sinon alors pas d'échec et mat.
+                    if (echiquier[lignePiece][colonnePiece] > 0){
+                        for (int ligneATester = 0 ; ligneATester < echiquier.length ; ligneATester++){
+                            for (int colonneATester = 0 ; colonneATester < echiquier[ligneATester].length; colonneATester++){
+                                if (MethodesDeplacements.piecePeutAllerCase(echiquier,lignePiece,colonnePiece,ligneATester,colonneATester)){
+                                    MethodesDeplacements.deplacerPiece(echiquierTemp,lignePiece,colonnePiece,ligneATester,colonneATester);
+                                    if (!DeplacementRoi.roiEstEnEchec(echiquierTemp,joueur)){
+                                        System.out.println("Cas peut sortir de la situation");
+                                        AffichageEchiquier.afficherEchiquier(echiquier);
+                                        AffichageEchiquier.afficherEchiquier(echiquierTemp);
+                                        return false;
+                                    } else {
+                                        MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier,echiquierTemp);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else if (joueur == 2){
+            // On parcourt chaque pièce du joueur
+            for (int lignePiece = 0 ; lignePiece < echiquier.length ; lignePiece++){
+                for (int colonnePiece = 0 ; colonnePiece < echiquier[lignePiece].length; colonnePiece++){
+                    // Si on détecte une pièce du joueur, on teste tous les déplacements possibles et on regarde en déplaçant dans un échiquier temporaire si l'échiquier temporaire est en échec, sinon alors pas d'échec et mat.
+                    if (echiquier[lignePiece][colonnePiece] < 0){
+                        for (int ligneATester = 0 ; ligneATester < echiquier.length ; ligneATester++){
+                            for (int colonneATester = 0 ; colonneATester < echiquier[ligneATester].length; colonneATester++){
+                                if (MethodesDeplacements.piecePeutAllerCase(echiquier,lignePiece,colonnePiece,ligneATester,colonneATester)){
+                                    MethodesDeplacements.deplacerPiece(echiquierTemp,lignePiece,colonnePiece,ligneATester,colonneATester);
+                                    if (!DeplacementRoi.roiEstEnEchec(echiquierTemp,joueur)){
+                                        System.out.println("Cas peut sortir de la situation");
+                                        AffichageEchiquier.afficherEchiquier(echiquier);
+                                        AffichageEchiquier.afficherEchiquier(echiquierTemp);
+                                        return false;
+                                    } else {
+                                        MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier,echiquierTemp);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        if ((colonneRoi+1 <= 7 && ligneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi+1))){
-            return false;
-        } else if ((colonneRoi-1 >= 0 && ligneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi-1))){
-            return false;
-        } else if ((ligneRoi+1 <= 7 && colonneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi-1))){
-            return false;
-        } else if ((ligneRoi-1 >= 0 && colonneRoi+1 <=7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi+1))){
-            return false;
-        } else if ((colonneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi,colonneRoi+1))){
-            return false;
-        } else if ((colonneRoi-1 >= 0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi,colonneRoi-1))){
-            return false;
-        } else if ((ligneRoi+1 <= 7) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi+1,colonneRoi))){
-            return false;
-        } else if ((ligneRoi-1 >=0) && (roiPeutAllerCase(echiquier,ligneRoi,colonneRoi,ligneRoi-1,colonneRoi))){
-            return false;
-        }
+
         return true;
 
     }

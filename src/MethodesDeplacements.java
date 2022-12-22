@@ -72,6 +72,7 @@ public class MethodesDeplacements {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrer les coordonnées de la colonne de la case d'arrivée (entre A et H) : ");
         String saisieColonne = sc.nextLine();
+        System.out.println("\n======================================================\n");
         saisieColonne = saisieColonne.toUpperCase();
         int nCase = saisieColonne.charAt(0) - 64;
 
@@ -146,6 +147,71 @@ public class MethodesDeplacements {
     }
 
     /**
+     * Indique si la pièce sur echiquier[ligneDepart][colonneDepart] peut aller à la case d'arrivée.
+     * @param echiquier
+     * @param ligneDepart
+     * @param colonneDepart
+     * @param ligneArrivee
+     * @param colonneArrivee
+     * @return
+     */
+    public static boolean piecePeutAllerCase(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
+
+        switch (echiquier[ligneDepart][colonneDepart]){
+            case 1, -1:
+                return DeplacementPion.pionPeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 2, -2:
+                return DeplacementRoi.roiPeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 3, -3:
+                return DeplacementDame.damePeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 4, -4:
+                return DeplacementFou.fouPeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 5, -5:
+                return DeplacementCavalier.cavalierPeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 6, -6:
+                return DeplacementTour.tourPeutAllerCase(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+        }
+        return false;
+    }
+
+    /**
+     * Déplace la pièce de départ vers la case d'arrivée
+     * @param echiquier
+     * @param ligneDepart
+     * @param colonneDepart
+     * @param ligneArrivee
+     * @param colonneArrivee
+     */
+    public static void deplacerPiece(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
+        switch (echiquier[ligneDepart][colonneDepart]){
+            case 1, -1:
+                DeplacementPion.deplacerPion(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+                break;
+            case 2, -2:
+                DeplacementRoi.deplacerRoi(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+                break;
+            case 3, -3:
+                DeplacementDame.deplacerDame(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+            case 4, -4:
+                DeplacementFou.deplacerFou(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 5, -5:
+                DeplacementCavalier.deplacerCavalier(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+            case 6, -6:
+                DeplacementTour.deplacerTour(echiquier, ligneDepart, colonneDepart, ligneArrivee, colonneArrivee);
+
+        }
+    }
+
+
+    /**
      * Met à jour les variables lignes et colonnes d'arrivée et de départ en testant si le déplacement est possible et si les coordonnées de départ et d'arrivée sont bien différentes. Enfin, demande une confirmation du coup.
      * @param echiquier
      * @param tabDeplacements
@@ -177,38 +243,18 @@ public class MethodesDeplacements {
                     if (!emplacementDepartValide) {
                         System.out.println("Erreur! La position renseignée ne correspond pas à une de vos pièce.\nVeuillez recommencer en ré-indiquant la pièce de départ.");
                         System.out.println("\n======================================================\n");
+
                     }
                 }
                 tabDeplacements[3] = saisieCoordonneeColonneArrivee();
                 tabDeplacements[2] = saisieCoordonneeLigneArrivee();
-                if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -1 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 1) {
-                    if (DeplacementPion.pionPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])) {
-                        emplacementArriveeValide = true;
-                    }
-                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -2 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 2){
-                    if (DeplacementRoi.roiPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
-                        emplacementArriveeValide = true;
-                    }
-                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -3 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 3){
-                    if (DeplacementDame.damePeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
-                        emplacementArriveeValide = true;
-                    }
-                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -4 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 4){
-                    if (DeplacementFou.fouPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
-                        emplacementArriveeValide = true;
-                    }
-                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -5 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 5){
-                    if (DeplacementCavalier.cavalierPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
-                        emplacementArriveeValide = true;
-                    }
-                } else if (echiquier[tabDeplacements[0]][tabDeplacements[1]] == -6 || echiquier[tabDeplacements[0]][tabDeplacements[1]] == 6){
-                    if (DeplacementTour.tourPeutAllerCase(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3])){
-                        emplacementArriveeValide = true;
-                    }
+                if (piecePeutAllerCase(echiquier,tabDeplacements[0],tabDeplacements[1],tabDeplacements[2],tabDeplacements[3])){
+                    emplacementArriveeValide = true;
                 }
                 if (!emplacementArriveeValide){
                     System.out.println("Erreur! La position d'arrivée renseignée est identique ou ne permet pas un coup valide.\nVeuillez recommencer en ré-indiquant la pièce de départ.");
                     System.out.println("\n======================================================\n");
+                    emplacementDepartValide = false;
                 }
             }
             System.out.println("Voulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
@@ -221,6 +267,14 @@ public class MethodesDeplacements {
             }
             if (choix == 1){
                 confirmation = true;
+            }
+        }
+    }
+    public static void copierEchiquierDansEchiquierTemp(int[][] echiquier, int[][] echiquierTemp){
+
+        for (int ligne = 0 ; ligne < echiquier.length ; ligne++) {
+            for (int colonne = 0; colonne < echiquier[ligne].length; colonne++) {
+                echiquierTemp[ligne][colonne] = echiquier[ligne][colonne];
             }
         }
     }
