@@ -26,6 +26,8 @@ class DeplacementCavalierTest {
         assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 5, 1));
         assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 5, 5));
         assertTrue(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 6, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 7, 4));
+        assertFalse(DeplacementCavalier.cavalierPeutAllerCase(echiquier1, 4, 3, 5, 6));
 
         int[][] echiquier2 = {
                 {0, 0, 0, 0, 0, 0, 0, 0},

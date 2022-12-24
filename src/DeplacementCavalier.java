@@ -13,13 +13,13 @@ public class DeplacementCavalier {
         if (echiquier[ligneDepart][colonneDepart] == 5 && echiquier[ligneArrivee][colonneArrivee] <= 0
                 || echiquier[ligneDepart][colonneDepart] == -5 && echiquier[ligneArrivee][colonneArrivee] >= 0) {
 
-            if (ligneArrivee == (ligneDepart - 2) && (colonneArrivee == (colonneDepart - 1) || colonneArrivee == (colonneDepart + 1))) {
+            if (ligneArrivee == (ligneDepart - 2) && ((colonneArrivee == (colonneDepart - 1) || colonneArrivee == (colonneDepart + 1)))) {
                 return true;
-            } else if (ligneArrivee == (ligneDepart - 1) && (colonneArrivee == (colonneDepart - 2) || colonneArrivee == (colonneDepart + 2))) {
+            } else if (ligneArrivee == (ligneDepart - 1) && ((colonneArrivee == (colonneDepart - 2) || colonneArrivee == (colonneDepart + 2)))) {
                 return true;
-            } else if (ligneArrivee == (ligneDepart + 1) && (colonneArrivee == (colonneDepart - 2) || colonneArrivee == (colonneDepart + 2))) {
+            } else if (ligneArrivee == (ligneDepart + 1) && ((colonneArrivee == (colonneDepart - 2) || colonneArrivee == (colonneDepart + 2)))) {
                 return true;
-            } else if (ligneArrivee == (ligneDepart + 2) && colonneArrivee == (colonneDepart - 1) || colonneArrivee == (colonneDepart + 1)) {
+            } else if (ligneArrivee == (ligneDepart + 2) && ((colonneArrivee == (colonneDepart - 1)) || (colonneArrivee == (colonneDepart + 1)))) {
                 return true;
             }
         }

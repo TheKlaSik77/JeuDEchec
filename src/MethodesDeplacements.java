@@ -291,7 +291,6 @@ public class MethodesDeplacements {
         for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
             for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
                 if (piecePeutAllerCase(echiquier,lignePiece,colonnePiece,ligne,colonne)){
-                    System.out.println("La case : " + echiquier[lignePiece][colonnePiece] + "Peut aller en ligne :" + ligne + ", colonne : " + colonne);
                     return true;
                 }
             }

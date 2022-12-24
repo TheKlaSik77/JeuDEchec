@@ -135,7 +135,6 @@ public class DeplacementRoi {
                 for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
                     if (echiquier[ligne][colonne] < 0){
                         if (MethodesDeplacements.testPieceMetEnEchec(echiquier,ligne,colonne)){
-                            System.out.println("ligne : " + ligne + ", colonne : " + colonne);
                             return true;
                         }
                     }
@@ -146,7 +145,6 @@ public class DeplacementRoi {
                 for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
                     if (echiquier[ligne][colonne] > 0){
                         if (MethodesDeplacements.testPieceMetEnEchec(echiquier,ligne,colonne)){
-                            System.out.println("ligne : " + ligne + ", colonne : " + colonne);
                             return true;
                         }
                     }

@@ -69,9 +69,10 @@ public class AffichageEchiquier{
 
         System.out.println("\n======================================================\n");
         String pieceSurCase = "";
-        System.out.println("  A     B     C     D     E     F     G     H ");
+        System.out.println("       A     B     C     D     E     F     G     H ");
         System.out.println();
         for (int ligne = 0 ; ligne < 8 ; ligne++){
+            System.out.print((ligne+ 1 ) + "    ");
             for (int colonne = 0 ; colonne < 8 ; colonne++){
 
                 switch (echiquier[ligne][colonne]){
@@ -124,10 +125,10 @@ public class AffichageEchiquier{
                 }
             }
             if (ligne != 7){
-                System.out.println("-----------------------------------------------");
+                System.out.println("     -----------------------------------------------");
             }
         }
-
+        System.out.println("\n       A     B     C     D     E     F     G     H ");
         System.out.println("\n======================================================\n");
 
     }
