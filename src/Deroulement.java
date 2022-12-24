@@ -20,6 +20,7 @@ public class Deroulement {
         boolean jeuNul = false;
         int[] tabDeplacements = new int[4];
         int[][] echiquierTemp = new int[echiquier.length][echiquier.length];
+        int nbCoups = 0;
         // Rajouter d'autres variables ici pour gerer le nul et rajouter une condition dans le while
 
         while (!jeuFini){
@@ -28,14 +29,17 @@ public class Deroulement {
                 jeuFini = true;
             } else {
                 // Cas ou roi est échec mais, peut s'en sortir
-                if (DeplacementRoi.roiEstEnEchec(echiquier,joueur)){
+                if (DeplacementRoi.roiEstEnEchec(echiquier,joueur)) {
                     do {
                         AffichageEchiquier.afficherEchiquier(echiquier);
                         MethodesDeplacements.demandeDeplacements(echiquier, tabDeplacements, joueur);
                         MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier, echiquierTemp);
                         MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
-                    } while (DeplacementRoi.roiEstEnEchec(echiquierTemp,joueur));
-                    MethodesDeplacements.deplacerPiece(echiquier,tabDeplacements[0],tabDeplacements[1],tabDeplacements[2],tabDeplacements[3]);
+                    } while (DeplacementRoi.roiEstEnEchec(echiquierTemp, joueur));
+                    MethodesDeplacements.deplacerPiece(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
+                } else if (MethodesDeplacements.partieEstNulle(echiquier,joueur,nbCoups)){
+                    jeuNul = true;
+                    jeuFini = true;
                 } else {
                     do {
                         AffichageEchiquier.afficherEchiquier(echiquier);
@@ -47,6 +51,7 @@ public class Deroulement {
                 }
             }
 
+            nbCoups++;
 
             if (joueur == 1){
                 joueur = 2;

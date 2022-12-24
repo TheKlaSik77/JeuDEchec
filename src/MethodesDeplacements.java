@@ -221,7 +221,7 @@ public class MethodesDeplacements {
     public static void demandeDeplacements(int[][] echiquier, int[] tabDeplacements, int joueur){
 
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
-
+        System.out.println("Joueur " + joueur + ", c'est à vous!");
         boolean confirmation = false;
         boolean emplacementDepartValide = false;
         boolean emplacementArriveeValide = false;
@@ -261,7 +261,7 @@ public class MethodesDeplacements {
             int choix = scanner.nextInt();
             System.out.println("\n======================================================\n");
             while (choix != 0 && choix != 1){
-                System.out.println("Erreur, choix incorrect!\n\nVoulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
+                System.out.print("Erreur, choix incorrect!\n\nVoulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
                 choix = scanner.nextInt();
                 System.out.println("\n======================================================\n");
             }
@@ -278,4 +278,51 @@ public class MethodesDeplacements {
             }
         }
     }
+
+    /**
+     * Teste si une pièce peut bouger.
+     * @param echiquier
+     * @param lignePiece
+     * @param colonnePiece
+     * @return
+     */
+    public static boolean piecePeutBouger(int[][] echiquier, int lignePiece, int colonnePiece){
+
+        for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
+            for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
+                if (piecePeutAllerCase(echiquier,lignePiece,colonnePiece,ligne,colonne)){
+                    System.out.println("La case : " + echiquier[lignePiece][colonnePiece] + "Peut aller en ligne :" + ligne + ", colonne : " + colonne);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean partieEstNulle(int[][] echiquier, int joueur, int nbCoups){
+
+        if (nbCoups > 70){
+            return true;
+        } else {
+            for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
+                for (int colonne = 0 ; colonne < echiquier[ligne].length ; colonne++){
+                    if (joueur == 1){
+                        if (echiquier[ligne][colonne] > 0){
+                            if (piecePeutBouger(echiquier,ligne,colonne)){
+                                return false;
+                            }
+                        }
+                    } else if (joueur == 2){
+                        if (echiquier[ligne][colonne] < 0){
+                            if (piecePeutBouger(echiquier,ligne,colonne)){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 }
