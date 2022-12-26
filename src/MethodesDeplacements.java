@@ -257,7 +257,7 @@ public class MethodesDeplacements {
                     emplacementDepartValide = false;
                 }
             }
-            System.out.println("Voulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
+            System.out.print("Voulez-vous valider ce coup ?\nInsérez 1 pour valider ou 0 pour insérer un autre coup : ");
             int choix = scanner.nextInt();
             System.out.println("\n======================================================\n");
             while (choix != 0 && choix != 1){

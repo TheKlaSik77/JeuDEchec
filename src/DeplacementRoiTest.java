@@ -42,6 +42,19 @@ class DeplacementRoiTest {
         };
         assertFalse(DeplacementRoi.roiPeutAllerCase(echiquier2,3,3,7,3));
         assertFalse(DeplacementRoi.roiPeutAllerCase(echiquier2,3,3,2,3));
+
+        int[][] echiquier3 = {
+                {-6,-5,-4,-3,-2, 0, 0,-6},
+                {-1,-1,-1,-1,-1,-1,-1,-1},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1},
+                { 6, 0, 0, 0, 2, 0, 0, 6}
+        };
+
+        assertTrue(DeplacementRoi.roiPeutAllerCase(echiquier3,0,4,0,7));
     }
 
     @Test
@@ -69,6 +82,57 @@ class DeplacementRoiTest {
         };
         DeplacementRoi.deplacerRoi(echiquier1,3,3,4,3);
         assertArrayEquals(echiquier1,echiquier2);
+
+        /*
+        int[][] echiquier3 = {
+                {-6,-5,-4,-3,-2, 0, 0,-6},
+                {-1,-1,-1,-1,-1,-1,-1,-1},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1},
+                { 6, 0, 0, 0, 2, 0, 0, 6}
+        };
+        int[][] echiquier4 = {
+                {-6,-5,-4,-3, 0,-6,-2, 0},
+                {-1,-1,-1,-1,-1,-1,-1,-1},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1},
+                { 6, 0, 0, 0, 2, 0, 0, 6}
+        };
+
+        DeplacementRoi.deplacerRoi(echiquier3,0,4,0,7);
+        assertArrayEquals(echiquier3,echiquier4);
+
+         */
+
+        int[][] echiquier3 = {
+                {-6, 0, 0, 0,-2, 0, 0,-6},
+                {-1,-1,-1,-1,-1,-1,-1,-1},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1},
+                { 6, 0, 0, 0, 2, 0, 0, 6}
+        };
+        int[][] echiquier4 = {
+                { 0, 0,-2,-6, 0, 0, 0,-6},
+                {-1,-1,-1,-1,-1,-1,-1,-1},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1},
+                { 6, 0, 0, 0, 2, 0, 0, 6}
+        };
+
+        DeplacementRoi.deplacerRoi(echiquier3,0,4,0,0);
+        assertArrayEquals(echiquier3,echiquier4);
     }
 
     @Test

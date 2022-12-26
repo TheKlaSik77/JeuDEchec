@@ -22,6 +22,8 @@ public class Deroulement {
             } else {
                 // Cas ou roi est échec mais, peut s'en sortir
                 if (DeplacementRoi.roiEstEnEchec(echiquier,joueur)) {
+                    DeplacementRoi.nePeutPlusGrandRoque(joueur);
+                    DeplacementRoi.nePeutPlusPetitRoque(joueur);
                     do {
                         AffichageEchiquier.afficherEchiquier(echiquier);
                         MethodesDeplacements.demandeDeplacements(echiquier, tabDeplacements, joueur);
@@ -29,6 +31,7 @@ public class Deroulement {
                         MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
                     } while (DeplacementRoi.roiEstEnEchec(echiquierTemp, joueur));
                     MethodesDeplacements.deplacerPiece(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
+
                 } else if (MethodesDeplacements.partieEstNulle(echiquier,joueur,nbCoups)){
                     jeuNul = true;
                     jeuFini = true;
@@ -40,6 +43,17 @@ public class Deroulement {
                         MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
                     } while (DeplacementRoi.roiEstEnEchec(echiquierTemp,joueur));
                     MethodesDeplacements.deplacerPiece(echiquier,tabDeplacements[0],tabDeplacements[1],tabDeplacements[2],tabDeplacements[3]);
+
+                    // Cas ne peut plus roque pour tour
+                    if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                        DeplacementRoi.nePeutPlusGrandRoque(joueur);
+                    } else if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                        DeplacementRoi.nePeutPlusPetitRoque(joueur);
+                    } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                        DeplacementRoi.nePeutPlusGrandRoque(joueur);
+                    } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                        DeplacementRoi.nePeutPlusPetitRoque(joueur);
+                    }
                 }
             }
 
@@ -103,6 +117,8 @@ public class Deroulement {
                 } else {
                     // Cas ou roi est échec mais, peut s'en sortir
                     if (DeplacementRoi.roiEstEnEchec(echiquier, joueurActuel)) {
+                        DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
                         do {
                             AffichageEchiquier.afficherEchiquier(echiquier);
                             MethodesDeplacements.demandeDeplacements(echiquier, tabDeplacements, joueurActuel);
@@ -121,6 +137,17 @@ public class Deroulement {
                             MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
                         } while (DeplacementRoi.roiEstEnEchec(echiquierTemp, joueurActuel));
                         MethodesDeplacements.deplacerPiece(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
+
+                        // Cas ne peut plus roque pour tour
+                        if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
+                        }
                     }
                 }
             // Tour de l'IA
@@ -131,6 +158,8 @@ public class Deroulement {
                 } else {
                     // Cas ou roi est échec mais, peut s'en sortir
                     if (DeplacementRoi.roiEstEnEchec(echiquier, joueurActuel)) {
+                        DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
                         do {
                             AffichageEchiquier.afficherEchiquier(echiquier);
                             MethodesIA.deplacementIA(echiquier,tabDeplacements,joueurActuel);
@@ -149,6 +178,16 @@ public class Deroulement {
                             MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
                         } while (DeplacementRoi.roiEstEnEchec(echiquierTemp, joueurActuel));
                         MethodesDeplacements.deplacerPiece(echiquier, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
+                        // Cas ne peut plus roque pour tour
+                        if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 0 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 0) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusGrandRoque(joueurActuel);
+                        } else if ((tabDeplacements[0] == 7 && tabDeplacements[1] == 7) && echiquier[0][1] == -6){
+                            DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
+                        }
                     }
                 }
             }

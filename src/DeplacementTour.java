@@ -59,17 +59,27 @@ public class DeplacementTour {
      * Si la tourPeutAllerCase() == true -> On peut lancer la fonction
      * Cette méthode déplace la tour à la bonne place
      */
-    public static void deplacerTour(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee){
+    public static void deplacerTour(int[][] echiquier, int ligneDepart, int colonneDepart,int ligneArrivee, int colonneArrivee) {
 
-        if (echiquier[ligneDepart][colonneDepart] == 6){
+        // Mettre à false un des deux roques du roi si tour se déplace en premiere
+
+        if (ligneDepart == 7 && colonneDepart == 7 && echiquier[ligneDepart][colonneDepart] == 6){
+            DeplacementRoi.nePeutPlusPetitRoque(1);
+        } else if (ligneDepart == 7 && colonneDepart == 0 && echiquier[ligneDepart][colonneDepart] == 6){
+            DeplacementRoi.nePeutPlusGrandRoque(1);
+        } else if (ligneDepart == 0 && colonneDepart == 7 && echiquier[ligneDepart][colonneDepart] == -6){
+            DeplacementRoi.nePeutPlusPetitRoque(2);
+        } else if (ligneDepart == 0 && colonneDepart == 0 && echiquier[ligneDepart][colonneDepart] == -6){
+            DeplacementRoi.nePeutPlusGrandRoque(2);
+        }
+        if (echiquier[ligneDepart][colonneDepart] == 6) {
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = 6;
-        } else if (echiquier[ligneDepart][colonneDepart] == -6){
+        } else if (echiquier[ligneDepart][colonneDepart] == -6) {
             echiquier[ligneDepart][colonneDepart] = 0;
             echiquier[ligneArrivee][colonneArrivee] = -6;
         }
 
-        // Mettre à false un des deux roque du roi si tour se déplace en premiere
     }
 
     public static boolean tourMetEnEchecRoi(int[][] echiquier, int ligne, int colonne) {

@@ -38,8 +38,55 @@ public class DeplacementRoi {
         //Gerer Cas Roque:
         /*
         Tester si peutRoque en fonction de la piece sur les coordonnées de départ et Tester si cases entre vides
-
          */
+        // Roque Blanc
+        if (echiquier[ligneDepart][colonneDepart] == 2){
+            // Petit roque
+            if ((ligneDepart == 7 && colonneDepart == 4) && (ligneArrivee == 7 && colonneArrivee == 6)){
+                if (peutPetitRoqueBlanc && (echiquier[7][6] == 0 && echiquier[7][5] == 0)){
+                    nePeutPlusPetitRoque(1);
+                    nePeutPlusGrandRoque(1);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            // Grand Roque
+            if ((ligneDepart == 7 && colonneDepart == 4) && (ligneArrivee == 7 && colonneArrivee == 2)){
+                if (peutGrandRoqueBlanc && (echiquier[7][1] == 0 && echiquier[7][2] == 0 && echiquier[7][3] == 0)){
+                    nePeutPlusGrandRoque(1);
+                    nePeutPlusPetitRoque(1);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        // Roque Noir
+        } else if (echiquier[ligneDepart][colonneDepart] == -2){
+            // Petit roque
+            if ((ligneDepart == 0 && colonneDepart == 4) && (ligneArrivee == 0 && colonneArrivee == 6)){
+                if (peutPetitRoqueNoir && (echiquier[0][6] == 0 && echiquier[0][5] == 0)){
+                    nePeutPlusPetitRoque(2);
+                    nePeutPlusGrandRoque(2);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            // Grand Roque
+            if ((ligneDepart == 0 && colonneDepart == 4) && (ligneArrivee == 0 && colonneArrivee == 2)){
+                if (peutGrandRoqueNoir && (echiquier[0][1] == 0 && echiquier[0][2] == 0 && echiquier[0][3] == 0)){
+                    nePeutPlusGrandRoque(2);
+                    nePeutPlusPetitRoque(2);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+
+
 
         if (!((ligneArrivee >= ligneDepart - 1 && ligneArrivee <= ligneDepart + 1) && (colonneArrivee >= colonneDepart - 1 && colonneArrivee <= colonneDepart + 1))){
 
@@ -87,15 +134,39 @@ public class DeplacementRoi {
 
     }
 
-    public static void deplacerRoi(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee){
+    public static void deplacerRoi(int[][] echiquier, int ligneDepart, int colonneDepart, int ligneArrivee, int colonneArrivee) {
         // Cas a part de déplacement petit roque ou grand roque
+        if (echiquier[ligneDepart][colonneDepart] == -2) {
+            if (ligneDepart == 0 && colonneDepart == 4 && ligneArrivee == 0 && colonneArrivee == 2) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[0][0] = -2;
+                echiquier[0][2] = -2;
+                echiquier[0][3] = -6;
+            } else if (ligneDepart == 0 && colonneDepart == 4 && ligneArrivee == 0 && colonneArrivee == 6) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[0][7] = 0;
+                echiquier[0][6] = -2;
+                echiquier[0][5] = -6;
+            } else {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = -2;
+            }
+        } else if (echiquier[ligneDepart][colonneDepart] == 2) {
+            if (ligneDepart == 7 && colonneDepart == 4 && ligneArrivee == 7 && colonneArrivee == 2) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[7][0] = 0;
+                echiquier[7][2] = 2;
+                echiquier[7][3] = 6;
+            } else if (ligneDepart == 7 && colonneDepart == 4 && ligneArrivee == 7 && colonneArrivee == 6) {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[7][7] = 0;
+                echiquier[7][6] = 2;
+                echiquier[7][5] = 6;
+            } else {
+                echiquier[ligneDepart][colonneDepart] = 0;
+                echiquier[ligneArrivee][colonneArrivee] = 2;
+            }
 
-        if (echiquier[ligneDepart][colonneDepart] == 2){
-            echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = 2;
-        } else if (echiquier[ligneDepart][colonneDepart] == -2){
-            echiquier[ligneDepart][colonneDepart] = 0;
-            echiquier[ligneArrivee][colonneArrivee] = -2;
         }
         if (echiquier[ligneDepart][colonneDepart] == 2){
             nePeutPlusPetitRoque(1);
@@ -105,6 +176,8 @@ public class DeplacementRoi {
             nePeutPlusGrandRoque(2);
 
         }
+
+
     }
 
     public static boolean roiMetEnEchecRoi(int[][] echiquier, int ligne, int colonne){
