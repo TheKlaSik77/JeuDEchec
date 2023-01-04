@@ -1,10 +1,7 @@
 public class MainKylian{
 
     public static void main(String[] args) {
-
-
-        Deroulement.jeuContreIA();
-
-
+        // Execution du programme
+        Deroulement.menuPrincipal();
     }
 }

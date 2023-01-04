@@ -121,6 +121,8 @@ public class Deroulement {
                         DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
                         do {
                             AffichageEchiquier.afficherEchiquier(echiquier);
+                            System.out.println("Échec!");
+                            System.out.println("\n======================================================\n");
                             MethodesDeplacements.demandeDeplacements(echiquier, tabDeplacements, joueurActuel);
                             MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier, echiquierTemp);
                             MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
@@ -162,6 +164,8 @@ public class Deroulement {
                         DeplacementRoi.nePeutPlusPetitRoque(joueurActuel);
                         do {
                             AffichageEchiquier.afficherEchiquier(echiquier);
+                            System.out.println("Échec!");
+                            System.out.println("\n======================================================\n");
                             MethodesIA.deplacementIA(echiquier,tabDeplacements,joueurActuel);
                             MethodesDeplacements.copierEchiquierDansEchiquierTemp(echiquier, echiquierTemp);
                             MethodesDeplacements.deplacerPiece(echiquierTemp, tabDeplacements[0], tabDeplacements[1], tabDeplacements[2], tabDeplacements[3]);
@@ -215,6 +219,39 @@ public class Deroulement {
             System.out.println("C'est un match nul!");
         }
 
+    }
+
+    public static void menuPrincipal(){
+        System.out.print("Bienvenue dans notre jeu d'échec.\n\n1. Contre l'ordinateur (Mode Solo)\n2. Joueur contre Joueur (mode 2 Joueur)\n\nChoisissez le mode de jeu: ");
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+        int choix = scanner.nextInt();
+        System.out.println("\n======================================================\n");
+
+        while (choix != 1 && choix != 2){
+            System.out.print("Erreur! Choix invalide.\n1. Contre l'ordinateur (Mode Solo)\n2. Joueur contre Joueur (mode 2 Joueur)\n\nChoisissez le mode de jeu: ");
+            choix = scanner.nextInt();
+            System.out.println("\n======================================================\n");
+        }
+
+        if (choix == 1){
+            jeuContreIA();
+        } else {
+            jeuJoueurContreJoueur();
+        }
+        System.out.print("Voulez-vous rejouer ?\n\n1.Oui\n2.Non\n\nVotre choix: ");
+        int rejouer = scanner.nextInt();
+        System.out.println("\n======================================================\n");
+
+        while(rejouer != 1 && rejouer != 2){
+            System.out.print("Voulez-vous rejouer ?\n\n1.Oui\n2.Non\n\nVotre choix: ");
+            rejouer = scanner.nextInt();
+            System.out.println("\n======================================================\n");
+        }
+        if (rejouer == 1){
+            menuPrincipal();
+        } else {
+            System.out.println("A bientôt!");
+        }
     }
 
 }
