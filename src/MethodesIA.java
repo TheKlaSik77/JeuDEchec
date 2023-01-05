@@ -20,7 +20,7 @@ public class MethodesIA {
                 do {
                     tabDeplacements[0] = (int) (Math.random() * 8);
                     tabDeplacements[1] = (int) (Math.random() * 8);
-                } while (echiquier[tabDeplacements[0]][tabDeplacements[1]] < 0);
+                } while (echiquier[tabDeplacements[0]][tabDeplacements[1]] <= 0);
             } while (!MethodesDeplacements.piecePeutBouger(echiquier,tabDeplacements[0],tabDeplacements[1]));
 
             do {
@@ -32,7 +32,7 @@ public class MethodesIA {
                 do {
                     tabDeplacements[0] = (int) (Math.random() * 8);
                     tabDeplacements[1] = (int) (Math.random() * 8);
-                } while (echiquier[tabDeplacements[0]][tabDeplacements[1]] > 0);
+                } while (echiquier[tabDeplacements[0]][tabDeplacements[1]] >= 0);
             } while (!MethodesDeplacements.piecePeutBouger(echiquier,tabDeplacements[0],tabDeplacements[1]));
 
             do {

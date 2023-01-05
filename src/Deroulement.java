@@ -92,12 +92,7 @@ public class Deroulement {
             System.out.print("Erreur! Choix invalide!\nChoisissez votre couleur (1 pour Blanc, 2 pour Noir) : ");
             joueur = scanner.nextInt();
         }
-        int ia = 0;
-        if (joueur == 1){
-            ia = 2;
-        } else {
-            ia = 1;
-        }
+
 
         int[][] echiquier = AffichageEchiquier.creerEtRemplirEchiquier();
         boolean jeuFini = false;

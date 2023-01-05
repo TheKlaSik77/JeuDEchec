@@ -300,7 +300,7 @@ public class MethodesDeplacements {
 
     public static boolean partieEstNulle(int[][] echiquier, int joueur, int nbCoups){
 
-        if (nbCoups > 70){
+        if (nbCoups > 80){
             return true;
         } else {
             for (int ligne = 0 ; ligne < echiquier.length ; ligne++){
