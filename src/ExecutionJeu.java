@@ -1,4 +1,4 @@
-public class MainKylian{
+public class ExecutionJeu {
 
     public static void main(String[] args) {
         // Execution du programme
